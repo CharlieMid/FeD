@@ -22,7 +22,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   Blauw
 
   #### Je focus:
-  Responsive
+  Surface plane
  
 </details>
 
@@ -40,11 +40,11 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   #### Screenshot(s) van de eerste pagina (small screen): 
   Home page 
-  <img src="readme-images/dummy-plaatje.jpg" width="375px" alt="Home pagina van dunkin donuts met een we love coffee plaatje">
+  <img src="homepagedunkin.PNG" width="375px" alt="Home pagina van dunkin donuts met een we love coffee plaatje">
 
   #### Screenshot(s) van de tweede pagina (small screen):
   bestel page  
-  <img src="readme-images/dummy-plaatje.jpg" width="375px" alt="Een bestel pagina die vraagt of je online wil bestellen of wil afhalen">
+  <img src="bestelpagedunkin.PNG" width="375px" alt="Een bestel pagina die vraagt of je online wil bestellen of wil afhalen">
  
 </details>
 
