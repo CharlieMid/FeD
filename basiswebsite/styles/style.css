@@ -1,0 +1,149 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+
+
+
+
+
+/*********************/
+/* CUSTOM PROPERTIES */
+/*********************/
+:root {
+	/* startje */
+	--color-text: #111;
+	--color-background: #eee;
+
+}
+
+
+
+
+
+/****************/
+/* JOUW STYLING */
+/****************/
+
+/* jouw code */
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: omnes-pro, sans-serif;
+	font-weight: 800;
+	font-style: normal;
+}
+
+/* NAV */
+
+
+
+nav ul {
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 1em;
+	padding-left: 0;
+}
+
+header img:first-of-type {
+	max-width: 10em;
+	height: auto;
+}
+
+header button img {
+	width: 1.2em;
+	height: auto;
+}
+
+header button {
+	width: 3em;
+	height: 2em;
+	background-color: rgb(240, 240, 240);
+	border: 0;
+	border-radius: 1em;
+}
+
+header li:first-of-type button {
+	width: 3em;
+	height: 1.7em
+}
+
+
+/* sticky button  */
+
+section:first-of-type {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	background-color: #f5f5f5;
+	border-top: 0.09em solid #f0f0f0;
+	padding-top: 5.4em;
+	position: fixed;
+	top: auto;
+	bottom: 0%;
+	left: 0%;
+	right: 0%;
+}
+
+section:first-of-type a {
+	background-color: rgb(255, 110, 12);
+	border-radius: 2em;
+	height: 3em;
+	padding: 1.3em 6.5em;
+	font-size: 1em;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 1em;
+}
+
+/* MAIN  */
+
+
+
+
+section:nth-of-type(2) article:first-of-type {
+	background-color: rgba(221, 189, 142, 255);
+	background-image: url("/images/coffee_bgeffect.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: 22em;
+	width: 20em;
+	margin: auto;
+	border-radius: 2em;
+}
+
+section:nth-of-type(2) article:first-of-type h3 {
+	font-family: omnes-pro, sans-serif;
+	font-weight: 900;
+	font-style: normal;
+	text-transform: uppercase;
+	color: white;
+	font-size: 3em;
+	text-align: center;
+}
+section:nth-of-type(2) article:first-of-type a {
+}
+section:nth-of-type(2) article:first-of-type img {
+	width: 90%;
+	margin: auto;
+	margin-top: -2em;
+	display: flex;
+	justify-content: center; 
+}
