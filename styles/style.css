@@ -1,31 +1,167 @@
 /**************/
 /* CSS REMEDY */
 /**************/
-*, *::after, *::before {
-  box-sizing:border-box;  
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
 }
-
-
-
-
 
 
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
 :root {
-	/* startje */
-	--color-text:#111;
-	--color-background:#eee;
+	--background-color:  rgb(255, 255, 255);
+	--text-uppercase: uppercase;
+	--font-color: rgb(255, 255, 255);
+	--font-family: omnes-pro, sans-serif, Ariel;
+	--list-style: none;
+	--ul-padding: 0; 
+}
+
+/****************/
+/* GENERAL STYLING */
+/****************/
+
+body{
+background-color: var(--background-color);
+}
+
+h1, h2, h3, h4, p, a{
+	font-family: var(--font-family);
+	text-transform: var(--text-uppercase);
+}
+
+ul{
+	padding-left: var(--ul-padding);
+}
+li {
+	list-style-type: var(--list-style);
+}
+
+h2{
+
+}
+
+h3{
+	font-size: 3em;
+}
+
+a {
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 800;
+	font-style: normal;
+	font-size: 1em;
+}
+
+/****************/
+/* HEADER */
+/****************/
+
+/* NAV */
+nav ul {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 1em;
+}
+
+header img:first-of-type {
+	max-width: 10em;
+	height: auto;
+}
+
+header button img {
+	width: 1.2em;
+	height: auto;
+}
+
+header button {
+	width: 3em;
+	height: 2em;
+	background-color: rgb(240, 240, 240);
+	border: 0;
+	border-radius: 1em;
+}
+
+header li:first-of-type button {
+	width: 3em;
+	height: 1.7em
 }
 
 
-
-
-
 /****************/
-/* JOUW STYLING */
+/* FOOTER */
 /****************/
 
-/* jouw code */
+/****************/
+/* MAIN */
+/****************/
+
+
+/* SECTION 2: STICKY BUTTON */
+
+section:first-of-type {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	background-color: #f5f5f5;
+	border-top: 0.09em solid #f0f0f0;
+	padding-top: 5.4em;
+	position: fixed;
+	top: auto;
+	bottom: 0%;
+	left: 0%;
+	right: 0%;
+}
+
+section:first-of-type a {
+	background-color: rgb(255, 110, 12);
+	border-radius: 2em;
+	height: 3em;
+	padding: 1.3em 6.5em;
+	color: var(--font-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 1em;
+}
+
+/* SECTION 2: MEDIA INTRO */
+
+section:nth-of-type(2) article:first-of-type {
+	background-color: rgba(221, 189, 142, 255);
+	background-image: url("/images/coffee_bgeffect.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	max-width: 100%;
+	height: 22em;
+	width: 20em;
+	margin: auto;
+	border-radius: 2em;
+}
+
+section:nth-of-type(2) article:first-of-type h3 {
+	font-family: omnes-pro, sans-serif;
+	font-weight: 900;
+	font-style: normal;
+	color: var(--font-color);
+	text-align: center;
+}
+
+section:nth-of-type(2) article:first-of-type a {}
+
+section:nth-of-type(2) article:first-of-type img {
+	width: 90%;
+	margin: auto;
+	margin-top: -2em;
+	display: flex;
+	justify-content: center;
+}
+
+
 
