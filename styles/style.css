@@ -11,49 +11,106 @@
 /*********************/
 /* CUSTOM PROPERTIES */
 /*********************/
+
+/* Dunkin heeft een eigen font, maar heb een soortgelijke gevonden op adobe en met hun instructies de font toegevoegd 
+https://fonts.adobe.com/my_fonts*/
 :root {
-	--background-color:  rgb(255, 255, 255);
+	--background-color: rgb(255, 255, 255);
+	--button-color-grey: rgb(240, 240, 240);
+	/* --button-radius: 2em; */
 	--text-uppercase: uppercase;
+	--text-align: center;
 	--font-color: rgb(255, 255, 255);
 	--font-family: omnes-pro, sans-serif, Ariel;
 	--list-style: none;
-	--ul-padding: 0; 
+	--ul-padding: 0;
 }
 
 /****************/
 /* GENERAL STYLING */
 /****************/
 
-body{
-background-color: var(--background-color);
+body {
+	background-color: var(--background-color);
+	padding: 0 1em;
 }
 
-h1, h2, h3, h4, p, a{
+header {
+	padding-top: .5em;
+}
+
+main {
+	padding-top: 2.5em;
+}
+
+/* Ik wil hier graag werken voor de screenreader, maar nu snap ik het nog niet, dusnu display noen */
+/* https://css-tricks.com/inclusively-hidden/ */
+/* https://uit.stanford.edu/accessibility/concepts/screen-reader-only-content */
+.sr-only {
+	/* clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px; */
+	/* overflow: hidden; */
+	/* position: absolute;
+	white-space: nowrap;
+	width: 1px; */
+
+	display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+a {
 	font-family: var(--font-family);
 	text-transform: var(--text-uppercase);
 }
 
-ul{
+ul,
+ol {
 	padding-left: var(--ul-padding);
 }
+
 li {
 	list-style-type: var(--list-style);
 }
 
-h2{
+/* h2 {} */
 
-}
-
-h3{
+h3 {
 	font-size: 3em;
 }
 
+h4{
+	font-size: 3em;
+	font-weight: 900;
+}
+
+
+button, a{
+	border: 0;	
+}
+button{
+	border-radius: .7em;
+	font-weight: 800;
+	font-size: 1em;
+	color: var(--font-color);
+}
 a {
 	text-decoration: none;
 	text-transform: uppercase;
 	font-weight: 800;
 	font-style: normal;
 	font-size: 1em;
+	border-radius: 2em;
+}
+
+p {
+	text-transform: none;
+	font-weight: 600;
 }
 
 /****************/
@@ -61,7 +118,7 @@ a {
 /****************/
 
 /* NAV */
-nav ul {
+/* nav ul {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -70,27 +127,92 @@ nav ul {
 
 header img:first-of-type {
 	max-width: 10em;
-	height: auto;
+}
+/*  */
+
+/* 
+header button {
+	width: 3em;
+	height: 2em;
+	background-color: var(--button-color-grey);
+	border: 0;
+	border-radius: 1em;
 }
 
 header button img {
 	width: 1.2em;
 	height: auto;
 }
-
-header button {
+  */
+/* header li:first-of-type button {
 	width: 3em;
-	height: 2em;
-	background-color: rgb(240, 240, 240);
-	border: 0;
+	height: 1.7em;
+}  */
+/* https://stackoverflow.com/questions/24052569/why-isnt-my-justify-content-property-working
+https://stackoverflow.com/questions/14855157/css-move-multiple-list-item-to-the-right-and-up
+Eerst had ik mijn nav proberen te maken met flex maar it was not flexing. Ik kwam er later uit met mijn 
+oudere site en de padding van de ul, maar na een feedback moment heb ik het veranderd in een grid. */
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout
+ Lukkt eerst niet, daarna hulp van docent. De grid zelf werkte ook niet wegens verkeerd de html opgeroepen*/
+header section {
+	display: grid;
+	grid-template-columns: max-content auto max-content;
+	grid-template-rows: 1fr;
+	display: grid;
+	align-items: center;
+}
+
+
+header section>a {
+	grid-column-start: 2;
+	grid-row-start: 1;
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+header a img {
+	max-width: 10em;
+
+}
+
+header section>button {
+	background-color: var(--button-color-grey);
 	border-radius: 1em;
 }
 
-header li:first-of-type button {
-	width: 3em;
-	height: 1.7em
+header section>button:first-of-type {
+	grid-column-start: 1;
+	grid-row-start: 1;
+	width: 4.3em;
+	height: 2.7em;
+	border-radius: 1.5em;
+
 }
 
+header section>button:nth-of-type(2) {
+	grid-column-start: 3;
+	grid-row-start: 1;
+	width: 3em;
+	height: 2em;
+}
+
+header section>button:first-of-type img {
+	width: 45%;
+}
+
+/* https://stackoverflow.com/questions/47865412/how-to-change-the-size-of-the-image-on-the-button-in-html-css
+Eerst was de img veel te groot, waardoor de container ook groot was */
+header button img {
+	width: 1.2em;
+	height: auto;
+}
+
+header nav {
+	display: none;
+}
 
 /****************/
 /* FOOTER */
@@ -101,26 +223,28 @@ header li:first-of-type button {
 /****************/
 
 
-/* SECTION 2: STICKY BUTTON */
+/* SECTION 1: STICKY BUTTON */
 
-section:first-of-type {
+main section:first-of-type {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: auto;
-	background-color: #f5f5f5;
-	border-top: 0.09em solid #f0f0f0;
-	padding-top: 5.4em;
+	background-color: var(--button-color-grey);
+	height: 13%;
 	position: fixed;
-	top: auto;
 	bottom: 0%;
 	left: 0%;
 	right: 0%;
 }
 
-section:first-of-type a {
+/* https://www.dofactory.com/css/buttons Ik vergat hoe ik een button moest maken in css */
+/* https://www.terluinwebdesign.nl/en/css/position-sticky-not-working-try-overflow-clip-not-overflow-hidden/ Voordat ik position absolute heb gebruikt, 
+heb ik sticky geprobeerd, maar dat werkt niet omdat het plakt aan de container. ik moet hiervoor dus fixed gebruiken.
+https://stackoverflow.com/questions/19188211/how-to-add-fixed-button-to-the-bottom-right-of-page
+https://www.google.com/search?client=firefox-b-d&q=how+to+position+fixed+with+flexbox, Daarna had ik problemen met
+flex en fixed. Dit heb ik opgelost door beide de a en de containter een flex en fixed te geven.*/
+main section:first-of-type a {
 	background-color: rgb(255, 110, 12);
-	border-radius: 2em;
 	height: 3em;
 	padding: 1.3em 6.5em;
 	color: var(--font-color);
@@ -132,36 +256,98 @@ section:first-of-type a {
 }
 
 /* SECTION 2: MEDIA INTRO */
+/* als ik responsive maak dan grid in de media wuery */
 
-section:nth-of-type(2) article:first-of-type {
+/* Ik had eerst voor de 1rste article de box goed gezet, maar het is handiger om het op de section en articles te roepen dan per elke individuele */
+main section:nth-of-type(2) {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.2em;
+}
+
+
+main section:nth-of-type(2) article {
+	border-radius: 1.5em;
+}
+
+/* https://www.w3schools.com/cssref/css3_pr_background-size.php
+Ik moest de background goed positioneren  */
+main section:nth-of-type(2) article:first-of-type {
 	background-color: rgba(221, 189, 142, 255);
 	background-image: url("/images/coffee_bgeffect.svg");
 	background-size: contain;
 	background-repeat: no-repeat;
-	max-width: 100%;
-	height: 22em;
-	width: 20em;
-	margin: auto;
-	border-radius: 2em;
+	height: 23em;
+	overflow-y: hidden;
 }
 
-section:nth-of-type(2) article:first-of-type h3 {
-	font-family: omnes-pro, sans-serif;
-	font-weight: 900;
-	font-style: normal;
+main section:nth-of-type(2) article:first-of-type h3 {
 	color: var(--font-color);
-	text-align: center;
+	text-align: var(--text-align);
+	margin: 0;
+	font-weight: 900;
 }
 
-section:nth-of-type(2) article:first-of-type a {}
-
-section:nth-of-type(2) article:first-of-type img {
-	width: 90%;
+/* https://www.browserstack.com/guide/how-to-resize-image-using-css */
+main section:nth-of-type(2) article:first-of-type img {
+	width: 95%;
 	margin: auto;
-	margin-top: -2em;
 	display: flex;
 	justify-content: center;
 }
 
 
+main section:nth-of-type(2) article:nth-of-type(2) {
+	background-color: rgba(242,12,144,255);
+	border: 0.5em solid rgba(242,12,144,255);
+	/* background-color: yellow; */
+	height: 12em;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(3, 33%);
+	color: var(--font-color);	
+}
 
+/* grid column end is zodat de h4 over de twee columns heen gaat. Eerst zag ik span 2 ergens staan maar het werkte niet
+Toen om hulp gevraagd en kwamen we met column end, maar hetzelfde probleem. Backgroudn geven en toen zagen we datahet wel deed,
+maar de contetn staat gewoon links. Column end is ook netter, want dat weet je zeker dat het over de gehele grid valt */
+/* https://stackoverflow.com/questions/53199146/make-element-take-two-columns */
+/* margin 0 want zat random margin op */
+main section:nth-of-type(2) article:nth-of-type(2) h4 {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	grid-row-start: 1;
+	display: grid;
+	align-items: center; 
+	justify-content: center;  
+	margin: 0;
+}
+
+main section:nth-of-type(2) article:nth-of-type(2) p {
+	grid-column-start: 1;
+	grid-row-start: 2;
+	font-size: .9em;
+}
+
+main section:nth-of-type(2) article:nth-of-type(2) button{
+	height: 3em;
+	width: 9em;
+	justify-self: center;
+
+}
+
+main section:nth-of-type(2) article:nth-of-type(2) button:first-of-type {
+	grid-column-start: 1;
+	grid-row-start: 3;
+	background-color: rgba(255,255,255);
+	color: rgba(242,12,144,255);;
+}
+
+main section:nth-of-type(2) article:nth-of-type(2) button:nth-of-type(2) {
+	grid-column-start: 2;
+	grid-row-start: 3;
+	background-color: rgba(255,255,255, 0.3);
+}
