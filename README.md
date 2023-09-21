@@ -287,7 +287,7 @@ Na de meeting ben heb ik mijn header veranderd. Mijn nav was ergens anders en da
   3.  https://stackoverflow.com/questions/14855157/css-move-multiple-list-item-to-the-right-and-up
   4. https://stackoverflow.com/questions/47865412/how-to-change-the-size-of-the-image-on-the-button-in-html-css
   5. https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/255px-Flag_of_the_Netherlands.svg.png
-  6. https://www.dunkin.nl/
+  6. https://www.dunkin.nl/ (ook voor de plaatjes)
   7. https://www.dofactory.com/css/buttons (how to style a button)
   8. https://www.terluinwebdesign.nl/en/css/position-sticky-not-working-try-overflow-clip-not-overflow-hidden/ (geprobeerd voor mijn sticky button)
   9. https://stackoverflow.com/questions/19188211/how-to-add-fixed-button-to-the-bottom-right-of-page
