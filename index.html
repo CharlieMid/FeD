@@ -6,10 +6,10 @@
 	<meta name="author" content="jouw naam">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>FED2324</title>
+	<title>Dunkin' FED2324</title>
 
 	<link href="styles/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://use.typekit.net/vim8vsz.css">
+	<link rel="stylesheet" href="https://use.typekit.net/hkt7rcd.css">
 	<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 </head>
 
@@ -17,11 +17,17 @@
 	<header>
 		<!-- https://www.dunkin.nl/ -->
 		<!-- https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/255px-Flag_of_the_Netherlands.svg.png -->
-		<section>
-			<a><img src="images/dunkinlogo.svg" alt="The dunkin logo, which acts as a back to homescreen button"></a>
-			<button><img src="images/menu-hamburger-svgrepo-com.svg" alt=""></button>
-			<button><img src="images/dutch.svg" alt=""></button>
-		</section>
+		<!-- maak hier een ul en li van  -->
+		<div>
+			<!-- knop doet het niet -->
+			<a href="index.html"><img src="images/dunkinlogo.svg"
+					alt="The dunkin logo, which acts as a back to homescreen button"></a>
+			<button aria-label="Knop om hamburger menu te openen"><img src="images/menu-hamburger-svgrepo-com.svg"
+					alt=""></button>
+			<button aria-label="Knop om taal te veranderen"><img src="images/dutch.svg" alt="Nederlandse taal"></button>
+			<!-- <button aria-label="Knop om hamburger menu te sluiten"><img src="images/close.svg"
+				alt=""></button> -->
+		</div>
 		<!-- menu -->
 		<nav>
 			<ul>
@@ -36,39 +42,50 @@
 
 
 
-	<main>
+	<main class="index">
 		<!-- stickybutton -->
-		<h1 class="sr-only"></h1>
+		<h1 class="sr-only">Home pagina</h1>
 		<section>
 			<h2 class="sr-only">Order knop onderaan de pagina</h2>
-			<a href="#">order now</a>
+			<a class="oranje_knop" href="order.html">order now</a>
 		</section>
 
 
 		<!-- intro -->
 		<section>
-			<h2 class="sr-only">media intro</h2>
+			<h2 class="sr-only">Introductie</h2>
 			<article>
 				<a href="#">
 					<h3>we love coffee</h3>
 					<img src="images/coffee.png"
-						alt="
-
-						Drie glazen koffie met slagroom erop, allemaal met dunkin-logo. Dit leidt naar de bestelpagina.">
+						alt=" Drie glazen koffie met slagroom erop, allemaal met dunkin-logo. Dit leidt naar de bestelpagina.">
 				</a>
 			</article>
 			<article>
-				<h4>bestel!</h4>
-				<p>Maak een keuze:</p>
-				<button>Bezorgen</button>
-				<button>Afhalen</button>
-				<form></form>
+				<!-- hier met sections werken maar lukt niet  -->
+				<h3 class="sr-only">Bestel formulier</h3>
+				<section>
+					<h4>bestel!</h4>
+					<p>Maak een keuze:</p>
+					<button tabindex="1" aria-label="Knop om te laten bezorgen">Bezorgen</button>
+					<button aria-label="Knop om af te halen">Afhalen</button>
+				</section>
+
+				<section>
+					<h4>Vul je postcode in:</h4>
+					<label for="postcode" class="sr-only">Postcode input</label>
+					<input type="text" id="postcode" maxlength="6">
+					<button aria-label="Knop om nu te bestellen">Order now</button>
+					<button aria-label="Knop om terug te gaan naar het begin">ga terug</button>
+				</section>
+
+
 			</article>
 			<article>
 				<a href="#">
 					<h4>Dunkin' x Ajax!</h4>
 					<img src="images/dunkin_ajax.png"
-					alt="Vier ajax spelers die poseren met een dunkin doos. Je zou verwachten dat je wordt geleidt naar iets wat hier mee te maken heeft, maar hierachter zit een blogposts over vegans.">
+						alt="Vier ajax spelers die poseren met een dunkin doos. Je zou verwachten dat je wordt geleidt naar iets wat hier mee te maken heeft, maar hierachter zit een blogposts over vegans.">
 				</a>
 			</article>
 		</section>
@@ -79,7 +96,7 @@
 		<section>
 			<h2 class="sr-only">Bestellen</h2>
 			<article>
-				<h3>Bestel dunkin online</h3>
+				<h3>Bestel <span>dunkin'</span> online</h3>
 				<ol>
 					<li>
 						<!-- lege alt zodat sr erover heen gaat -->
@@ -97,40 +114,48 @@
 						<h4>3. Ontvang je bestelling</h4>
 					</li>
 				</ol>
-				<a href="#">order now</a>
+				<a class="oranje_knop" href="order.html">order now</a>
 			</article>
 		</section>
-
 
 
 		<!-- app download reclame -->
-		<section>
-			<h2 class="sr-only">app reclame</h2>
-			<article>
-				<h3>App jij 'm al?</h3>
-				<H4>De dunkin' app</H4>
-				<p>Lekker scoren met exclusieve coupons en leuke campagnes met winacties.</p>
-				<a></a>
-				<a></a>
-				<img>
-			</article>
-		</section>
+		<!-- <section>
+				<h2 class="sr-only">app reclame</h2>
+				<article>
+					<h3>App jij 'm al?</h3>
+					<H4>De dunkin' app</H4>
+					<p>Lekker scoren met exclusieve coupons en leuke campagnes met winacties.</p>
+					<a></a>
+					<a></a>
+					<img>
+				</article>
+			</section> -->
+
 
 
 
 		<!-- blog posts -->
-		<section>
+		<section class="blogposts">
 			<h2 class="sr-only">Dunkin nieuws</h2>
 			<article>
-				<h3></h3>
-				<a></a>
-				<img>
+				<h3>Oproep aan alle vegans out there: Donut...</h3>
+				<p>Oproep aan alle vegans out there: Donut worry, we got you covered!</p>
+				<a class="oranje_knop">Lees meer</a>
+				<img src="images/donuts_box.jpg"
+					alt="Een donut box met verschillende kleurrijke donuts, zoals een donut in de vorm van een hartje met een glimlach.">
+				<img src="images/donut_icon.svg" alt="">
 			</article>
 
 			<article>
-				<h3></h3>
-				<a></a>
-				<img>
+				<h3>Dunkin' komt naar Den Bosch</h3>
+				<p>Omcirkel de datum alvast in je agenda, op 28 juli as. opent Dunkin' een vestiging in Den Bosch. Om
+					dit te vieren hebben we feestelijke openingsacties bedacht... Bekijk snel onze acties en zorg dat je
+					er optijd bij bent! Zien we jou bij de opening?</p>
+				<a class="oranje_knop">Lees meer</a>
+				<img src="images/denbosch_poster.jpg"
+					alt="Een poster dat de opening van een Dunkin winkel verwelkomt in Den Bosch, op 28 Juli. In het hoekje staat een sticker met de tekst: '100 x 1 jaar gratis donuts.'">
+				<img src="images/donut_icon.svg" alt="">
 			</article>
 		</section>
 
@@ -141,7 +166,7 @@
 			<h2 class="sr-only">Meer dunkin nieuws</h2>
 			<ul>
 				<li>
-					<a href="">
+					<a class="oranje_knop" href="">
 						<h3></h3>
 						<p></p>
 						<img>
@@ -183,12 +208,12 @@
 
 
 	<footer>
-		<img>
+		<img src="images/dunkin_logo_footer.svg" alt="Het dunkin logo">
 		<ul>
-			<li><a></a></li>
-			<li><a></a></li>
-			<li><a></a></li>
-			<li><a></a></li>
+			<li><a>Storefinder</a></li>
+			<li><a>Jobs</a></li>
+			<li><a>Blog</a></li>
+			<li><a>Over Dunkin'</a></li>
 		</ul>
 
 		<ul>
@@ -202,3 +227,5 @@
 </body>
 
 </html>
+
+<!-- tabidnex op andere dingetjes -->

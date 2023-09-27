@@ -15,14 +15,20 @@
 /* Dunkin heeft een eigen font, maar heb een soortgelijke gevonden op adobe en met hun instructies de font toegevoegd 
 https://fonts.adobe.com/my_fonts*/
 :root {
-	--background-color: rgb(255, 255, 255);
-	--button-color-grey: rgb(240, 240, 240);
-	/* --button-radius: 2em; */
+	--focus-color: rgba(133, 0, 75, 0.858);
+	--header-button-color: rgb(240, 240, 240);
+	--main-button-color: rgb(255, 110, 12);
+	--style-color-one: rgba(242, 12, 144, 255);
+	--style-color-two: rgb(255, 110, 12);
+	--main-header-color: rgba(242, 12, 144, 255);
+	--main-p-color: rgb(76, 76, 76);
+	--background-font-color: rgb(255, 255, 255);
 	--text-uppercase: uppercase;
 	--text-align: center;
-	--font-color: rgb(255, 255, 255);
+	--line-height: 1em;
 	--font-family: omnes-pro, sans-serif, Ariel;
 	--list-style: none;
+	--border-radius-cubes: 1.5em;
 	--ul-padding: 0;
 }
 
@@ -30,34 +36,34 @@ https://fonts.adobe.com/my_fonts*/
 /* GENERAL STYLING */
 /****************/
 
+/* --big styling */
+/* ik kon eerst niet goed de bg color aanpassen van de sectie, omdat er om de body een padding enx stond. Als ik at eruit haalde, werkte de content niet meer.hideIk heb dus ervoorg gekozen om dit te doen, omdat,
+dit een oplossing is waarmee ik niet mijn code helemaal moest omgooien, of veel aan. https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient  */
 body {
-	background-color: var(--background-color);
 	padding: 0 1em;
+	background: linear-gradient(rgb(255, 255, 255) 0% 12%, rgba(245, 245, 245, 255) 12% 46%, rgb(255, 255, 255) 46% 100%);
 }
 
+
 header {
-	padding-top: .5em;
+	background-color: white;
 }
+
 
 main {
 	padding-top: 2.5em;
+
 }
 
 /* Ik wil hier graag werken voor de screenreader, maar nu snap ik het nog niet, dusnu display noen */
 /* https://css-tricks.com/inclusively-hidden/ */
 /* https://uit.stanford.edu/accessibility/concepts/screen-reader-only-content */
 .sr-only {
-	/* clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px; */
-	/* overflow: hidden; */
-	/* position: absolute;
-	white-space: nowrap;
-	width: 1px; */
-
-	display: none;
+	font-size: .01em;
+	padding-left: 500em;
 }
 
+/* --texts and buttons */
 h1,
 h2,
 h3,
@@ -67,6 +73,7 @@ button,
 a {
 	font-family: var(--font-family);
 	text-transform: var(--text-uppercase);
+	line-height: var(--line-height);
 }
 
 ul,
@@ -78,27 +85,31 @@ li {
 	list-style-type: var(--list-style);
 }
 
-/* h2 {} */
 
-h3 {
-	font-size: 3em;
-}
-
-h4{
+h3,
+h4 {
 	font-size: 3em;
 	font-weight: 900;
+	font-style: normal;
+	color: var(--main-header-color);
 }
 
 
-button, a{
-	border: 0;	
+p {
+	text-transform: none;
+	font-weight: 600;
+	color: var(--main-p-color);
+	line-height: 1.4em;
 }
-button{
+
+
+button {
 	border-radius: .7em;
 	font-weight: 800;
 	font-size: 1em;
-	color: var(--font-color);
+	color: var(--background-font-color);
 }
+
 a {
 	text-decoration: none;
 	text-transform: uppercase;
@@ -108,46 +119,71 @@ a {
 	border-radius: 2em;
 }
 
-p {
-	text-transform: none;
-	font-weight: 600;
+a:focus{
+	background-color: var(--focus-color);
 }
+
+
+button,
+a {
+	border: 0;
+}
+
+button:focus {
+	background-color: var(--focus-color);
+}
+
+/* tab .index */
+
+.oranje_knop {
+	background-color: var(--main-button-color);
+	height: 3em;
+	padding: 1.7em 7em;
+	color: var(--background-font-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/* --cube styling dat over meer sections gaat */
+main section:nth-of-type(2),
+main section:nth-child(5),
+.order article {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.2em;
+}
+
+/* hielp om de 2e article weer goed te krijgen, behalve de width */
+main section:nth-of-type(2) article,
+main section:nth-of-type(2) article:nth-of-type(2) section,
+main section:nth-child(5) article img:first-of-type,
+.order article section {
+	border-radius: var(--border-radius-cubes);
+}
+
+
+/* --svg icon styling dat over meer sections gaat */
+footer img,
+main section:nth-of-type(3) img,
+main section:nth-child(5) img:last-of-type {
+	background-color: var(--style-color-one);
+	width: 3.5em;
+	border-radius: 3em;
+	display: flex;
+	align-self: center;
+	justify-self: center;
+}
+
 
 /****************/
 /* HEADER */
 /****************/
 
-/* NAV */
-/* nav ul {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	font-size: 1em;
-}
 
-header img:first-of-type {
-	max-width: 10em;
-}
-/*  */
-
-/* 
-header button {
-	width: 3em;
-	height: 2em;
-	background-color: var(--button-color-grey);
-	border: 0;
-	border-radius: 1em;
-}
-
-header button img {
-	width: 1.2em;
-	height: auto;
-}
-  */
-/* header li:first-of-type button {
-	width: 3em;
-	height: 1.7em;
-}  */
 /* https://stackoverflow.com/questions/24052569/why-isnt-my-justify-content-property-working
 https://stackoverflow.com/questions/14855157/css-move-multiple-list-item-to-the-right-and-up
 Eerst had ik mijn nav proberen te maken met flex maar it was not flexing. Ik kwam er later uit met mijn 
@@ -156,16 +192,18 @@ oudere site en de padding van de ul, maar na een feedback moment heb ik het vera
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout
  Lukkt eerst niet, daarna hulp van docent. De grid zelf werkte ook niet wegens verkeerd de html opgeroepen*/
-header section {
+header div {
 	display: grid;
 	grid-template-columns: max-content auto max-content;
+	/* grid-template-columns: 25% 50% 25%; */
 	grid-template-rows: 1fr;
 	display: grid;
 	align-items: center;
 }
 
 
-header section>a {
+
+header div>a {
 	grid-column-start: 2;
 	grid-row-start: 1;
 	display: flex;
@@ -178,12 +216,12 @@ header a img {
 
 }
 
-header section>button {
-	background-color: var(--button-color-grey);
+header div>button {
+	background-color: var(--header-button-color);
 	border-radius: 1em;
 }
 
-header section>button:first-of-type {
+header div>button:first-of-type {
 	grid-column-start: 1;
 	grid-row-start: 1;
 	width: 4.3em;
@@ -192,14 +230,14 @@ header section>button:first-of-type {
 
 }
 
-header section>button:nth-of-type(2) {
+header div>button:nth-of-type(2) {
 	grid-column-start: 3;
 	grid-row-start: 1;
 	width: 3em;
 	height: 2em;
 }
 
-header section>button:first-of-type img {
+header div>button:first-of-type img {
 	width: 45%;
 }
 
@@ -210,31 +248,99 @@ header button img {
 	height: auto;
 }
 
+
+
+/* --nav */
+
 header nav {
 	display: none;
+	width: 100%;
+	position: fixed;
+	height: 100vh;
+	background: rgb(255, 255, 255);
+	margin: auto -1.5em auto -1.5em;
+	z-index: 10;
 }
+
+header nav ul {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(5, 1fr);
+	grid-row-gap: 26px;
+	display: grid;
+	justify-items: center;
+	font-size: 2.4em;
+	color: rgba(81, 45, 0, 255);
+}
+
 
 /****************/
 /* FOOTER */
 /****************/
+/* idk how to fix the problem of them margin without doing - */
+footer {
+	background-color: rgb(255, 110, 12);
+	margin: auto -1.5em 10em -1.5em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 2em;
+}
 
-/****************/
-/* MAIN */
-/****************/
+/* sstrugglin with gap, was workin on the wrong parent. if i wanted to use gap ,had to put the lists in grid */
+footer ul:first-of-type {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(4, 1fr);
+	grid-row-gap: .5em;
+}
 
-
-/* SECTION 1: STICKY BUTTON */
-
-main section:first-of-type {
+footer ul:first-of-type a {
+	background-color: rgba(238, 77, 37, 255);
+	padding: 1.7em 7em;
+	color: var(--background-font-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--button-color-grey);
+
+}
+
+footer img {
+	background-color: rgba(245, 245, 245, 255);
+	width: 10em;
+	border-radius: 7em;
+	padding: .5em;
+	margin-top: -3em;
+	transform: rotate(-20deg);
+	box-shadow: .3em .3em .5em rgb(25, 25, 25, .5);
+}
+
+
+/****************/
+/* MAIN*/
+/****************/
+
+/* https://www.dofactory.com/css/buttons Ik vergat hoe ik een button moest maken in css */
+/* https://www.terluinwebdesign.nl/en/css/position-sticky-not-working-try-overflow-clip-not-overflow-hidden/ Voordat ik position absolute heb gebruikt, 
+heb ik sticky geprobeerd, maar dat werkt niet omdat het plakt aan de container. ik moet hiervoor dus fixed gebruiken.
+https://stackoverflow.com/questions/19188211/how-to-add-fixed-button-to-the-bottom-right-of-page
+https://www.google.com/search?client=firefox-b-d&q=how+to+position+fixed+with+flexbox, Daarna had ik problemen met
+flex en fixed. Dit heb ik opgelost door beide de a en de containter een flex en fixed te geven.*/
+
+/* SECTION 1: STICKY BUTTON */
+/* zindex want img van footer ginge rvoheenx */
+.index h1+section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(245, 245, 245, 255);
 	height: 13%;
 	position: fixed;
 	bottom: 0%;
 	left: 0%;
 	right: 0%;
+	z-index: 1;
 }
 
 /* https://www.dofactory.com/css/buttons Ik vergat hoe ik een button moest maken in css */
@@ -243,14 +349,7 @@ heb ik sticky geprobeerd, maar dat werkt niet omdat het plakt aan de container. 
 https://stackoverflow.com/questions/19188211/how-to-add-fixed-button-to-the-bottom-right-of-page
 https://www.google.com/search?client=firefox-b-d&q=how+to+position+fixed+with+flexbox, Daarna had ik problemen met
 flex en fixed. Dit heb ik opgelost door beide de a en de containter een flex en fixed te geven.*/
-main section:first-of-type a {
-	background-color: rgb(255, 110, 12);
-	height: 3em;
-	padding: 1.3em 6.5em;
-	color: var(--font-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.index h1+section a {
 	position: fixed;
 	bottom: 1em;
 }
@@ -258,23 +357,31 @@ main section:first-of-type a {
 /* SECTION 2: MEDIA INTRO */
 /* als ik responsive maak dan grid in de media wuery */
 
+
 /* Ik had eerst voor de 1rste article de box goed gezet, maar het is handiger om het op de section en articles te roepen dan per elke individuele */
-main section:nth-of-type(2) {
+/* main section:nth-of-type(2) {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	gap: 1.2em;
-}
+} */
 
-
+/* 
 main section:nth-of-type(2) article {
-	border-radius: 1.5em;
-}
+	border-radius: var(--border-radius-cubes);
+} */
+
+
+
+
+
+/* --article 1, 3 */
 
 /* https://www.w3schools.com/cssref/css3_pr_background-size.php
 Ik moest de background goed positioneren  */
-main section:nth-of-type(2) article:first-of-type {
+.index section:nth-of-type(2) article:first-of-type,
+.index section:nth-of-type(2) article:last-of-type {
 	background-color: rgba(221, 189, 142, 255);
 	background-image: url("/images/coffee_bgeffect.svg");
 	background-size: contain;
@@ -283,71 +390,321 @@ main section:nth-of-type(2) article:first-of-type {
 	overflow-y: hidden;
 }
 
-main section:nth-of-type(2) article:first-of-type h3 {
-	color: var(--font-color);
+.index section:nth-of-type(2) article:first-of-type h3,
+.index section:nth-of-type(2) article:last-of-type h4 {
+	color: var(--background-font-color);
 	text-align: var(--text-align);
-	margin: 0;
+	margin: .5em;
 	font-weight: 900;
 }
 
 /* https://www.browserstack.com/guide/how-to-resize-image-using-css */
-main section:nth-of-type(2) article:first-of-type img {
+.index section:nth-of-type(2) article:first-of-type img,
+.index section:nth-of-type(2) article:last-of-type img {
 	width: 95%;
 	margin: auto;
 	display: flex;
 	justify-content: center;
 }
 
+/* --article 2 + styling main order*/
 
-main section:nth-of-type(2) article:nth-of-type(2) {
-	background-color: rgba(242,12,144,255);
-	border: 0.5em solid rgba(242,12,144,255);
-	/* background-color: yellow; */
-	height: 12em;
-	width: 100%;
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type,
+.order article section:first-of-type {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: repeat(3, 33%);
-	color: var(--font-color);	
 }
 
-/* grid column end is zodat de h4 over de twee columns heen gaat. Eerst zag ik span 2 ergens staan maar het werkte niet
-Toen om hulp gevraagd en kwamen we met column end, maar hetzelfde probleem. Backgroudn geven en toen zagen we datahet wel deed,
-maar de contetn staat gewoon links. Column end is ook netter, want dat weet je zeker dat het over de gehele grid valt */
-/* https://stackoverflow.com/questions/53199146/make-element-take-two-columns */
-/* margin 0 want zat random margin op */
-main section:nth-of-type(2) article:nth-of-type(2) h4 {
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type h4,
+.order article section:first-of-type h4 {
 	grid-column-start: 1;
 	grid-column-end: -1;
 	grid-row-start: 1;
-	display: grid;
-	align-items: center; 
-	justify-content: center;  
-	margin: 0;
 }
 
-main section:nth-of-type(2) article:nth-of-type(2) p {
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
+.order article section:nth-of-type(2) h4 {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	grid-row-start: 2;
+}
+
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type p,
+.order article section:nth-of-type(2) p {
 	grid-column-start: 1;
 	grid-row-start: 2;
 	font-size: .9em;
+	color: var(--background-font-color);
 }
 
-main section:nth-of-type(2) article:nth-of-type(2) button{
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button:first-of-type,
+.order article section:first-of-type button:first-of-type {
+	grid-column-start: 1;
+	grid-row-start: 3;
+	background-color: rgba(255, 255, 255);
+	color: var(--style-color-one);
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button:nth-of-type(2),
+.order article section:first-of-type button:nth-of-type(2) {
+	grid-column-start: 2;
+	grid-row-start: 3;
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
+.order article section:nth-of-type(2),
+.order article section:nth-of-type(3),
+.order article section:last-of-type {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	gap: 0;
+	display: none;
+}
+
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
+.order article section:nth-of-type(2) h4 {
+	font-size: 1.5em;
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) input,
+.order article section:nth-of-type(2) input {
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	background-color: rgba(255, 255, 255, 0.3);
+	width: 12.1em;
+	height: 3.6em;
+	border: 0;
+	border-radius: .7em 0 0 .7em;
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) input:focus,
+.order article section:nth-of-type(2) input:focus {
+	background-color: var(--focus-color);
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) button:first-of-type,
+.order article section:nth-of-type(2) button:first-of-type {
+	grid-column-start: 2;
+	grid-row-start: 3;
+	background-color: rgba(255, 255, 255);
+	color: var(--style-color-one);
+	border-radius: 0 .7em .7em 0;
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) button:nth-of-type(2),
+.order article section:nth-of-type(2) button:nth-of-type(2) {
+	grid-column-start: 1;
+	grid-row-start: 1;
+	background-color: unset;
+	text-align: left;
+}
+
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
+.order article section:first-of-type,
+.order article section:nth-of-type(2),
+.order article section:nth-of-type(3),
+.order article section:last-of-type {
+	background-color: var(--style-color-one);
+	border: 0.5em solid var(--style-color-one);
+	height: 12em;
+	width: 20.4em;
+	color: var(--background-font-color);
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
+.order article section:first-of-type h4,
+.order article section:nth-of-type(2) h4,
+.order article section:nth-of-type(3) h4,
+.order article section:last-of-type h4 {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	color: var(--background-font-color);
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) button:first-of-type,
+.order article section:first-of-type button,
+.order article section:nth-of-type(2) button:first-of-type {
 	height: 3em;
 	width: 9em;
 	justify-self: center;
+}
+
+
+
+
+/* --article 3 */
+
+.index section:nth-of-type(2) article:last-of-type {
+	background-color: rgba(153, 215, 233, 255);
+	background-image: none;
+	width: 100%;
+	overflow-x: hidden;
 
 }
 
-main section:nth-of-type(2) article:nth-of-type(2) button:first-of-type {
-	grid-column-start: 1;
-	grid-row-start: 3;
-	background-color: rgba(255,255,255);
-	color: rgba(242,12,144,255);;
+/* display flex lukte niet, veel gebprobeerd om de img te centren maar niks lukt eme dus margin */
+.index section:nth-of-type(2) article:last-of-type img {
+	width: 25em;
+	margin-left: -1.8em;
+	display: flex;
 }
 
-main section:nth-of-type(2) article:nth-of-type(2) button:nth-of-type(2) {
+
+
+/* SECTION 3: bestel stappenplan */
+
+.index section:nth-of-type(3) ol {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	grid-row-gap: 1em;
+}
+
+.index section:nth-of-type(3) ol li {
+	background-color: white;
+	display: grid;
+	grid-template-columns: 30% 66%;
+	grid-template-rows: repeat(2, 4.5em);
+	border-radius: var(--border-radius-cubes);
+}
+
+
+.index section:nth-of-type(3) h3 {
+	font-size: 4em;
+	margin-bottom: .6em;
+}
+
+.index section:nth-of-type(3) h3 span {
+	color: var(--style-color-two);
+}
+
+.index section:nth-of-type(3) h4 {
 	grid-column-start: 2;
-	grid-row-start: 3;
-	background-color: rgba(255,255,255, 0.3);
+	grid-row-start: 1;
+	font-size: 1.5em;
+	/* margin: 1em 0 .2em 0 ; */
+	/* display: grid;
+	justify-content: flex-end; */
+	/* background-color: aqua; */
+
+}
+
+.index section:nth-of-type(3) p {
+	grid-column-start: 2;
+	grid-row-start: 2;
+	font-size: .85em;
+	grid-column-start: 2;
+	grid-row-start: 2;
+	line-height: 1.2em;
+}
+
+.index section:nth-of-type(3) li:last-of-type h4 {
+	grid-column-start: 2;
+	grid-row: 1/3;
+	display: flex;
+	align-self: center;
+	justify-self: center;
+	/* margin: auto; */
+}
+
+.index section:nth-of-type(3) img {
+	grid-column-start: 1;
+	grid-row: 1 / 3;
+	width: 3.5em;
+	padding: .7em;
+}
+
+.index section:nth-of-type(3) li:nth-of-type(2) img {
+	background-color: var(--style-color-two);
+}
+
+
+
+/* SECTION 5: BLOG POSTS */
+
+
+.index section:nth-child(5) article {
+	display: flex;
+	flex-direction: column;
+	padding-top: 4em;
+}
+
+
+.index section:nth-child(5) h3 {
+	font-size: 2.35em;
+	text-transform: unset;
+	margin: auto;
+}
+
+.index section:nth-child(5) article:last-of-type h3 {
+	color: var(--style-color-two);
+}
+
+.index section:nth-child(5) p {
+	font-size: 1.2em;
+}
+
+
+.index section:nth-child(5) img {
+	order: -1;
+}
+
+.index section:nth-child(5) img:first-of-type {
+	width: 95%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.index section:nth-child(5) img:last-of-type {
+	background-color: var(--style-color-two);
+	width: 6em;
+	/* border-radius: 3em;
+	display: flex;
+	align-self: flex-end;
+	justify-self: center; */
+	padding: 1.2em;
+	margin: -3em 2em 1em auto;
+}
+
+.index section:nth-child(5) img:last-of-type {
+	background-color: var(--style-color-one);
+}
+
+
+/****************/
+/* MAIN ORDER*/
+/****************/
+
+#orderbody {
+	background: unset;
+}
+
+.order {
+	margin-top: .5em;
+	background-color: var(--style-color-one);
+}
+
+.order article section {
+	margin: 10em auto 15em auto;
+}
+
+.order article section p {
+	color: var(--background-font-color);
 }

@@ -114,7 +114,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   Toen heb ik een paar dingetjes aangepast om het passend te maken en het probleem was volgensmij dat ik de verkeerde tags aanriep. De flex werkte toen wel, maar hij zat nog naar rechts. Ik zat alles te bekijken en vond toen dat mijn ul een standaard padding had. Ik had dit eerst niet bedacht, omdat ik de bolletjes van de ul al had verwijderd. 
 
- <img src="readme-images/old_nav_code.png"  alt="code van mijn nav die ik voor het eerst heb gemaakt">
+ <img src="readme-images/old_nav_code.png"  width="375px" alt="code van mijn nav die ik voor het eerst heb gemaakt">
   Daarna was het dus vooral opstarten met weer css schrijven. Ik dacht niet te veel aan of het netjes was, maar eerder of het wel werkte.
 
 
@@ -122,13 +122,13 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
 
   Daarna ging ik het blokje maken voor de koffie. Ik kon eerst niet uitvogelen hoe ik het precies moest stylen, dus heb ik de originele site bekeken en de css daarvan gepakt, en hem een beetje aangepast. Vanuit daar heb ik eigenlijk de hele code weer aangepast toen ik meerdere dingen moest toevoegen. Daarna had ik problemen met de content in het blokje. Het positioneerde niet goed. Ik was met flex en met grid bezig, maar niks werkte. Het probleem bleek de margin de zijn die de browser gaf. Verder had ik mijn koffie img die eruit viel. Lua hielp hier met overflow.
   
-   <img src="readme-images/img_overflow.png"  alt="plaatje van een koffieplaatje die buiten zijn container valt">
+   <img src="readme-images/img_overflow.png" width="375px" alt="plaatje van een koffieplaatje die buiten zijn container valt">
   sticky button
 
   Ik wist eerst niet hoe ik het goed moest positioneren. Ik had in de orginele css gekeken, maar hier kwam ik niet mee verder, want ik snapte de css niet. Ik heb een beetje online rondgekeken en kwam dus met sticky. voordat ik position absolute heb gebruikt, heb ik sticky geprobeerd, maar dat werkt niet omdat het plakt aan de container. ik moet hiervoor dus fixed gebruiken. Daarna had ik problemen met flex en fixed. Dit heb ik opgelost door beide de a en de containter een flex en fixed te geven.
 
   Daarna heb ik mijn css goed neergezet met kopjes en dergelijke.
- <img src="readme-images/stickybutton_code.png"  alt="code van mijn sticky button">
+ <img src="readme-images/stickybutton_code.png"  width="375px" alt="code van mijn sticky button">
 
 
 
@@ -154,7 +154,7 @@ grid header
 
 Na de meeting ben heb ik mijn header veranderd. Mijn nav was ergens anders en dat betekende dat de css ook anders moest. Ik ben van flex naar grid gegaan. Dit moest ik ook uitvogelen. Eerst moest ik opzoeken hoe ik eigenlijk de grid moest maken, maar ik vond dat lastig, dus heb ik om hulp gevraagd bij de docent. Hij had al instructies gegeven maar die werkten niet. We heb samen ernaar gekeken. De grid klopte niet, er was een rij bijgekomen. Het probleem was dat we in de css de html verkeerd hadden aangeroepen.
 
- <img src="readme-images/new_header_code.png"  alt="code van mijn header die ik heb aangepast">
+ <img src="readme-images/new_header_code.png" width="375px" alt="code van mijn header die ik heb aangepast">
 
 </details>
 
@@ -180,20 +180,24 @@ Na de meeting ben heb ik mijn header veranderd. Mijn nav was ergens anders en da
   ### Agenda voor meeting
   samen met je groepje opstellen
 
-  | student 1      | student 2          | student 3    | student 4        |
-  | ---            | ---                | ---          | ---              |
-  | dit bespreken  | en dit             | en ik dit    | en dan ik dat    |
-  | en dat ook nog | dit als er tijd is | nog een punt | dit wil ik zeker |
-  | ...            | ...                | ...          | ...              |
+  | student 1      | 
 
+ 
+
+
+brianne
 
   ### Verslag van meeting
   hier na afloop snel de uitkomsten van de meeting vastleggen
 
-  - punt 1
-  - punt 2
-  - nog een punt
-- ...
+  - form , verschillende secties aangeven met js
+  - hamburger, min positie , met javascript goedzetten en dan met transitite
+  - transaprante header naar links, geef ze goede titel
+  - button aria label (vertel wat gaat doen)
+  - hamburger decoratief
+  - geef plaatjes in readme width.
+  - html in orde,
+  - globaal werken en dan kleiner
 
 </details>
 
@@ -209,6 +213,11 @@ Na de meeting ben heb ik mijn header veranderd. Mijn nav was ergens anders en da
   ### Bevindingen
   Lijst met je bevindingen die in de test naar voren kwamen (geef ook aan wat er verbeterd is):
 
+  - section in header een divke, want is puur om de vormgeving
+  - id's in mijn labels
+  - miste een heading bij een article
+- meer focus toevoegen
+- als ik tab doe voor focus, gaat hij van de pagina af en hij pakt niet alle buttons
 </details>
 
 
@@ -223,6 +232,55 @@ Na de meeting ben heb ik mijn header veranderd. Mijn nav was ergens anders en da
   ### Stand van zaken
   hier dit ging goed & dit was lastig (neem ook screenshots op van delen van je website en code)
 
+
+  to do lijstje:
+de form (only half) add the js to the first
+hambruger menu
+2nd page (only half)
+mkake header sticky ( i gave up)
+social footer
+
+(bg color, line height, margin toen aanpassen, span, lil griddy hit the groddy ayyyyy
+
+then tried to disperse the margin but with grid on the whole section but it messed with the other grid and everthing was in the first. then the sizing of the li, didnt want to use margin but couldt find aythting. then figured i could give the grid an em size + change the sizing of the colum in % to give a right padding effect)
+
+(header fixed thingy)
+
+(blog posts, eerst met margin wil naar grid werken. order flexy thing, ging decent. wat general stylig en order van css veranderd, zindex omdat footer img eroverheen ging)
+
+
+did the footer buttons, grid. then i changed my fonts settings cuz of a adobe accoutn switch, but it messed a little with the fonts thickness, but ill worry bout that later
+
+
+root en dergleijke aangepast. kleure pink and orange style 1 en 2, betere benaming en meer dingen root. Svg icon styling in general styling gedaan
+
+
+when i tried to add sections to the form it just didnt work cuz it messed with my selectors. there is still room of improvent in my selector but i fixed a few things. mainly sectio 5 was responding to it? i changed it from nth of type to child, but that didnt work on section 2
+
+maar de sticky button is ook uitelaar gevallen. i changed the selector to a sibling selector and it worked
+
+nu is de form zelf alleen nog uitelkaar gevallen
+
+selector aangepast. eerst met cass geprobeerd en toen class verwijders
+was niet helemaal zoals het oude. de width wilde niet meedoen dus moest die aanpassen. 
+
+2e pagina gedaan, stylin gvan achtegrond wil gwn niet veel struggel met margin dus heb opgegeven
+
+daarna css werk
+met input in html
+
+js worksss slayyyyy
+
+js strugglen mett twee pagina dus nieuwe script toegevoefd
+
+label toevoegen bij input en select voor sr
+
+js werkt niet helemaal maar hij doet het. heel veel dubble functies en de laaste goback klopt niet
+
+beetje hamburger emnu gedaan
+js lukt alleen voor openen
+
+home knop doet noet
 
   ### Agenda voor meeting
   samen met je groepje opstellen
@@ -299,6 +357,10 @@ Na de meeting ben heb ik mijn header veranderd. Mijn nav was ergens anders en da
 15. https://stackoverflow.com/questions/53199146/make-element-take-two-columns (overlay op twee colums grid)
 16. https://css-tricks.com/inclusively-hidden/ (sr-only)
 17. https://uit.stanford.edu/accessibility/concepts/screen-reader-only-content
+18. https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors
+19. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select (voor dropdown)
+20. https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label (onderzoek label)
+21. https://www.svgrepo.com/svg/499592/close-x
 
 
 </details>
