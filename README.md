@@ -218,6 +218,9 @@ brianne
   - miste een heading bij een article
 - meer focus toevoegen
 - als ik tab doe voor focus, gaat hij van de pagina af en hij pakt niet alle buttons
+- tabindex doet het niet
+- voeg skip link toe
+
 </details>
 
 
@@ -281,6 +284,9 @@ beetje hamburger emnu gedaan
 js lukt alleen voor openen
 
 home knop doet noet
+
+
+header in ul gegeooid en nu css kapor
 
   ### Agenda voor meeting
   samen met je groepje opstellen

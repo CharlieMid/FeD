@@ -15,7 +15,7 @@
 /* Dunkin heeft een eigen font, maar heb een soortgelijke gevonden op adobe en met hun instructies de font toegevoegd 
 https://fonts.adobe.com/my_fonts*/
 :root {
-	--focus-color: rgba(133, 0, 75, 0.858);
+	--focus-color: rgba(189, 0, 107, 0.4);
 	--header-button-color: rgb(240, 240, 240);
 	--main-button-color: rgb(255, 110, 12);
 	--style-color-one: rgba(242, 12, 144, 255);
@@ -59,10 +59,12 @@ main {
 /* https://css-tricks.com/inclusively-hidden/ */
 /* https://uit.stanford.edu/accessibility/concepts/screen-reader-only-content */
 .sr-only {
-	font-size: .01em;
+	font-size: 0em;
 	padding-left: 500em;
 }
-
+body>a{
+	display: none;
+}
 /* --texts and buttons */
 h1,
 h2,
@@ -192,10 +194,9 @@ oudere site en de padding van de ul, maar na een feedback moment heb ik het vera
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout
  Lukkt eerst niet, daarna hulp van docent. De grid zelf werkte ook niet wegens verkeerd de html opgeroepen*/
-header div {
+header ul{
 	display: grid;
 	grid-template-columns: max-content auto max-content;
-	/* grid-template-columns: 25% 50% 25%; */
 	grid-template-rows: 1fr;
 	display: grid;
 	align-items: center;
@@ -203,7 +204,7 @@ header div {
 
 
 
-header div>a {
+header ul li:first-of-type{
 	grid-column-start: 2;
 	grid-row-start: 1;
 	display: flex;
@@ -211,33 +212,38 @@ header div>a {
 	justify-content: center;
 }
 
-header a img {
+header ul li a img {
 	max-width: 10em;
 
 }
 
-header div>button {
+header ul li button:first-of-type {
 	background-color: var(--header-button-color);
 	border-radius: 1em;
 }
 
-header div>button:first-of-type {
+header ul:first-of-type li:last-of-type{
+	display:none;
+}
+
+header ul:first-of-type li:nth-of-type(2) button,
+header ul:first-of-type li:last-of-type button {
 	grid-column-start: 1;
 	grid-row-start: 1;
 	width: 4.3em;
 	height: 2.7em;
 	border-radius: 1.5em;
-
 }
 
-header div>button:nth-of-type(2) {
+header ul li:nth-of-type(3) button {
 	grid-column-start: 3;
 	grid-row-start: 1;
 	width: 3em;
 	height: 2em;
 }
 
-header div>button:first-of-type img {
+header ul li:nth-of-type(2) button img,
+header ul:first-of-type li:last-of-type img {
 	width: 45%;
 }
 
@@ -481,7 +487,7 @@ Ik moest de background goed positioneren  */
 	grid-column-end: 3;
 	grid-row-start: 3;
 	background-color: rgba(255, 255, 255, 0.3);
-	width: 12.1em;
+	width: 14em;
 	height: 3.6em;
 	border: 0;
 	border-radius: .7em 0 0 .7em;
@@ -519,7 +525,8 @@ Ik moest de background goed positioneren  */
 	background-color: var(--style-color-one);
 	border: 0.5em solid var(--style-color-one);
 	height: 12em;
-	width: 20.4em;
+	width: 87vw;
+	/* width: 20.4em; */
 	color: var(--background-font-color);
 }
 
@@ -619,8 +626,6 @@ Ik moest de background goed positioneren  */
 	grid-row: 1/3;
 	display: flex;
 	align-self: center;
-	justify-self: center;
-	/* margin: auto; */
 }
 
 .index section:nth-of-type(3) img {
@@ -697,8 +702,8 @@ Ik moest de background goed positioneren  */
 }
 
 .order {
-	margin-top: .5em;
 	background-color: var(--style-color-one);
+	margin: .5em -1.5em auto -1.5em;
 }
 
 .order article section {

@@ -1,105 +1,101 @@
 console.log("hi");
 
-var bestelFormOrder = document.querySelector(".order article section");
-var bestelFormOneOrder = document.querySelector(".order article section:first-of-type");
-var bestelFormTwoOrder = document.querySelector(".order article section:nth-of-type(2)");
-var bestelFormDayOrder = document.querySelector(".order article section:nth-of-type(3)");
-var bestelFormLastOrder = document.querySelector(".order article section:last-of-type");
+var bestelForm = document.querySelector(".order article section");
+var bestelFormOne = document.querySelector(".order article section:first-of-type");
+var bestelFormTwo = document.querySelector(".order article section:nth-of-type(2)");
+var bestelFormDay = document.querySelector(".order article section:nth-of-type(3)");
+var bestelFormLast = document.querySelector(".order article section:last-of-type");
 
-var buttonOneOrder = document.querySelector(".order article section:first-of-type button:first-of-type");
-var buttonTwoOrder = document.querySelector(".order article section:first-of-type button:nth-of-type(2)");
+var buttonOne = document.querySelector(".order article section:first-of-type button:first-of-type");
+var buttonTwo = document.querySelector(".order article section:first-of-type button:nth-of-type(2)");
 
-var backButtonOneOrder = document.querySelector(".order article section:nth-of-type(2) button:nth-of-type(2)");
-var backButtonTwoOrder = document.querySelector(".order article section:nth-of-type(3) button:last-of-type");
-var backButtonThreeOrder = document.querySelector(".order article section:last-of-type button");
+var backButtonOne = document.querySelector(".order article section:nth-of-type(2) button:nth-of-type(2)");
+var backButtonTwo = document.querySelector(".order article section:nth-of-type(3) button:last-of-type");
+var backButtonThree = document.querySelector(".order article section:last-of-type button");
 
-var vandaagButtonOrder = document.querySelector(".order article section:nth-of-type(3) button:first-of-type");
-var AnderButtonOrder = document.querySelector(".order article section:nth-of-type(3) button:nth-of-type(2)");
-var displaySettingOrder = bestelFormOrder.style.display;
+var vandaagButton = document.querySelector(".order article section:nth-of-type(3) button:first-of-type");
+var anderButton = document.querySelector(".order article section:nth-of-type(3) button:nth-of-type(2)");
+var displaySetting = bestelForm.style.display;
 
-
-function changeDisplayOrder() {
-
-    if (bestelFormOneOrder != 'none') {
-        bestelFormOneOrder.style.display = 'none';
-        bestelFormTwoOrder.style.display = 'grid';
-    }
-
-    // if (bestelFormTwoOrder == 'grid') {
-    //     bestelFormTwoOrder.style.display = 'none';
-    //     bestelFormOneOrder.style.display = 'grid';
-    // }
-}
-
-function changeDisplayOrderTwo() {
-
-    if (bestelFormOneOrder != 'none') {
-        bestelFormOneOrder.style.display = 'none';
-        bestelFormDayOrder.style.display = 'grid';
-    }
-
-    // if (bestelFormDayOrder == 'grid') {
-    //     bestelFormDayOrder.style.display = 'none';
-    //     bestelFormOneOrder.style.display = 'grid';
-    // }
-}
-
-function changeDisplayOrderThree() {
-
-    if (bestelFormDayOrder != 'none') {
-        bestelFormDayOrder.style.display = 'none';
-        bestelFormLastOrder.style.display = 'grid';
-    }
-}
 
 
 function goBackOrder() {
-    if (bestelFormTwoOrder != 'none') {
-        bestelFormTwoOrder.style.display = 'none';
-        bestelFormOneOrder.style.display = 'grid';
+    if (bestelFormTwo != 'none') {
+        bestelFormTwo.style.display = 'none';
+        bestelFormOne.style.display = 'grid';
     }
 
-    if(bestelFormDayOrder != 'none'){
-        bestelFormDayOrder.style.display = 'none';
-        bestelFormOneOrder.style.display = 'grid';
+    else if (bestelFormDay != 'none') {
+        bestelFormDay.style.display = 'none';
+        bestelFormOne.style.display = 'grid';
     }
 
-    if(bestelFormLastOrder != 'none'){
-        bestelFormLastOrder.style.display = 'none';
-        bestelFormDayOrder.style.display = 'grid';
+    else if (bestelFormLast != 'none') {
+        bestelFormLast.style.display = 'none';
+        bestelFormDay.style.display = 'grid';
     }
 }
 
 
 
-buttonOneOrder.addEventListener("click", changeDisplayOrder);
-backButtonOneOrder.addEventListener("click", goBackOrder);
+buttonOne.addEventListener("click", function(){
+    if(bestelFormOne != 'none') {
+        bestelFormOne.style.display = 'none';
+        bestelFormTwo.style.display = 'grid';
+}
+}
+);
 
-buttonTwoOrder.addEventListener("click", changeDisplayOrderTwo);
-backButtonTwoOrder.addEventListener("click", goBackOrder);
+buttonTwo.addEventListener("click", function(){
+    if (bestelFormOne != 'none') {
+        bestelFormOne.style.display = 'none';
+        bestelFormDay.style.display = 'grid';
+    }
+}
 
-vandaagButtonOrder.addEventListener("click", changeDisplayOrderThree);
-AnderButtonOrder.addEventListener("click", changeDisplayOrderThree);
-backButtonThreeOrder.addEventListener("click", goBackOrder);
+);
+
+
+vandaagButton.addEventListener("click", function(){
+    if (bestelFormDay != 'none') {
+        bestelFormDay.style.display = 'none';
+        bestelFormLast.style.display = 'grid';
+    }
+}
+
+);
+
+
+anderButton.addEventListener("click", function(){
+    if (bestelFormDay != 'none') {
+        bestelFormDay.style.display = 'none';
+        bestelFormLast.style.display = 'grid';
+    }
+}
+);
+
+backButtonOne.addEventListener("click", goBackOrder);
+backButtonTwo.addEventListener("click", goBackOrder);
+backButtonThree.addEventListener("click", goBackOrder);
 
 
 
 var headerNav = document.querySelector("header nav");
-var navButton = document.querySelector("header section > button:first-of-type");
+var navButton = document.querySelector("header ul li button:first-of-type ");
 function openNav() {
     // document.querySelector("header nav").style.height = "100%";
     headerNav.style.display = 'block';
 
-  }
-  
-  /* Close */
-  function closeNav() {
-    if(headerNav == 'block'){
-    // document.querySelector("header nav").style.height = "0%";
-    headerNav.style.display = 'none';
-  } 
+}
+
+/* Close */
+function closeNav() {
+    if (headerNav == 'block') {
+        // document.querySelector("header nav").style.height = "0%";
+        headerNav.style.display = 'none';
+    }
 }
 
 
-  navButton.addEventListener("click", openNav);
-  navButton.addEventListener("click", closeNav);
+navButton.addEventListener("click", openNav);
+navButton.addEventListener("click", closeNav);
