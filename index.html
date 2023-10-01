@@ -27,17 +27,16 @@
 						src="images/menu-hamburger-svgrepo-com.svg" alt=""></button></li>
 			<li><button  aria-label="Knop om taal te veranderen"><img src="images/dutch.svg"
 						alt="Nederlandse taal"></button></li>
-			<li><button aria-label="Knop om hamburger menu te sluiten"><img src="images/close.svg" 
-				alt=""></button></li>
+			
 		</ul>
 		<!-- menu -->
 		<nav>
 			<ul>
-				<li><a>storefinder</a></li>
-				<li><a>Jobs</a></li>
-				<li><a>Blogs</a></li>
-				<li><a>More></a></li>
-				<li><a>Bestellen</a></li>
+				<li><a href="#">storefinder</a></li>
+				<li><a href="#">Jobs</a></li>
+				<li><a href="#">Blogs</a></li>
+				<li><a href="#">More></a></li>
+				<li><a href="order.html">Bestellen</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -49,7 +48,7 @@
 		<h1 class="sr-only">Home pagina</h1>
 		<section>
 			<h2 class="sr-only">Order knop onderaan de pagina</h2>
-			<a  class="oranje_knop" href="order.html">order now</a>
+			<a  href="order.html">order now</a>
 		</section>
 
 
@@ -80,6 +79,28 @@
 					<button aria-label="Knop om nu te bestellen">Order now</button>
 					<button aria-label="Knop om terug te gaan naar het begin">ga terug</button>
 				</section>
+
+
+				<section>
+					<h4>Wanneer wil je jouw bestelling afhalen?</h4>
+					<button aria-label="Knop om vandaag te selecteren">Vandaag</button>
+					<button aria-label="Knop om een andere dag te selecteren">Andere dag</button>
+					<button aria-label="Knop om terug te gaan naar het begin">ga terug</button>
+				</section>
+	
+				<!-- value goes for the inside text -->
+				<section>
+					<h4>Kies een vestiging uit de lijst</h4>
+					<label for="locaties" class="sr-only">kies locatie</label>
+					<select id="locaties">
+						<option value="">kies locatie</option>
+						<option value="">Almere</option>
+						<option value="">Amersfoort</option>
+						<option value="">Amstelveen</option>
+						<option value="">Amsterdam</option>
+					  </select>
+					<button aria-label="Knop om terug te gaan naar het begin">ga terug</button>
+					</section>
 
 
 			</article>
@@ -116,34 +137,18 @@
 						<h4>3. Ontvang je bestelling</h4>
 					</li>
 				</ol>
-				<a class="oranje_knop" href="order.html">order now</a>
+				<a href="order.html">order now</a>
 			</article>
 		</section>
 
 
-		<!-- app download reclame -->
-		<!-- <section>
-				<h2 class="sr-only">app reclame</h2>
-				<article>
-					<h3>App jij 'm al?</h3>
-					<H4>De dunkin' app</H4>
-					<p>Lekker scoren met exclusieve coupons en leuke campagnes met winacties.</p>
-					<a></a>
-					<a></a>
-					<img>
-				</article>
-			</section> -->
-
-
-
-
 		<!-- blog posts -->
-		<section class="blogposts">
+		<section>
 			<h2 class="sr-only">Dunkin nieuws</h2>
 			<article>
 				<h3>Oproep aan alle vegans out there: Donut...</h3>
 				<p>Oproep aan alle vegans out there: Donut worry, we got you covered!</p>
-				<a href="#" class="oranje_knop">Lees meer</a>
+				<a href="#">Lees meer</a>
 				<img src="images/donuts_box.jpg"
 					alt="Een donut box met verschillende kleurrijke donuts, zoals een donut in de vorm van een hartje met een glimlach.">
 				<img src="images/donut_icon.svg" alt="">
@@ -154,53 +159,10 @@
 				<p>Omcirkel de datum alvast in je agenda, op 28 juli as. opent Dunkin' een vestiging in Den Bosch. Om
 					dit te vieren hebben we feestelijke openingsacties bedacht... Bekijk snel onze acties en zorg dat je
 					er optijd bij bent! Zien we jou bij de opening?</p>
-				<a href="#" class="oranje_knop">Lees meer</a>
+				<a href="#">Lees meer</a>
 				<img src="images/denbosch_poster.jpg"
 					alt="Een poster dat de opening van een Dunkin winkel verwelkomt in Den Bosch, op 28 Juli. In het hoekje staat een sticker met de tekst: '100 x 1 jaar gratis donuts.'">
 				<img src="images/donut_icon.svg" alt="">
-			</article>
-		</section>
-
-
-
-		<!-- meer dunkin nieuws -->
-		<section>
-			<h2 class="sr-only">Meer dunkin nieuws</h2>
-			<ul>
-				<li>
-					<a class="oranje_knop" href="">
-						<h3></h3>
-						<p></p>
-						<img>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<h3></h3>
-						<p></p>
-						<img>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<h3></h3>
-						<p></p>
-						<img>
-					</a>
-				</li>
-			</ul>
-			<!-- iets met de pijltes -->
-		</section>
-
-
-
-		<!-- storefinder -->
-		<section>
-			<h2 class="sr-only">storefinder</h2>
-			<article>
-				<img>
-				<h3></h3>
-				<a></a>
 			</article>
 		</section>
 
@@ -212,22 +174,16 @@
 	<footer>
 		<img src="images/dunkin_logo_footer.svg" alt="Het dunkin logo">
 		<ul>
-			<li><a>Storefinder</a></li>
-			<li><a>Jobs</a></li>
-			<li><a>Blog</a></li>
-			<li><a>Over Dunkin'</a></li>
+			<li><a href="#">Storefinder</a></li>
+			<li><a href="#">Jobs</a></li>
+			<li><a href="#">Blog</a></li>
+			<li><a href="#">Over Dunkin'</a></li>
 		</ul>
 
-		<ul>
-			<li><a></a></li>
-			<li><a></a></li>
-			<li><a></a></li>
-		</ul>
+		
 	</footer>
 
 	<script defer src="scripts/script.js"></script>
 </body>
 
 </html>
-
-<!-- tabidnex op andere dingetjes -->

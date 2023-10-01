@@ -15,7 +15,7 @@
 /* Dunkin heeft een eigen font, maar heb een soortgelijke gevonden op adobe en met hun instructies de font toegevoegd 
 https://fonts.adobe.com/my_fonts*/
 :root {
-	--focus-color: rgba(189, 0, 107, 0.4);
+	--focus-color: rgba(185, 0, 105, 0.457);
 	--header-button-color: rgb(240, 240, 240);
 	--main-button-color: rgb(255, 110, 12);
 	--style-color-one: rgba(242, 12, 144, 255);
@@ -41,7 +41,7 @@ https://fonts.adobe.com/my_fonts*/
 dit een oplossing is waarmee ik niet mijn code helemaal moest omgooien, of veel aan. https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient  */
 body {
 	padding: 0 1em;
-	background: linear-gradient(rgb(255, 255, 255) 0% 12%, rgba(245, 245, 245, 255) 12% 46%, rgb(255, 255, 255) 46% 100%);
+	background: linear-gradient(rgb(255, 255, 255) 0% 15%, rgba(245, 245, 245, 255) 15% 50%, rgb(255, 255, 255) 46% 100%);
 }
 
 
@@ -51,20 +51,21 @@ header {
 
 
 main {
-	padding-top: 2.5em;
+	padding-top: 5em;
+	padding-bottom: 10em;
 
 }
 
-/* Ik wil hier graag werken voor de screenreader, maar nu snap ik het nog niet, dusnu display noen */
-/* https://css-tricks.com/inclusively-hidden/ */
-/* https://uit.stanford.edu/accessibility/concepts/screen-reader-only-content */
+
 .sr-only {
 	font-size: 0em;
 	padding-left: 500em;
 }
-body>a{
+
+body>a {
 	display: none;
 }
+
 /* --texts and buttons */
 h1,
 h2,
@@ -72,7 +73,8 @@ h3,
 h4,
 p,
 button,
-a {
+a,
+select {
 	font-family: var(--font-family);
 	text-transform: var(--text-uppercase);
 	line-height: var(--line-height);
@@ -97,12 +99,14 @@ h4 {
 }
 
 
-p {
+p,
+select {
 	text-transform: none;
 	font-weight: 600;
 	color: var(--main-p-color);
 	line-height: 1.4em;
 }
+
 
 
 button {
@@ -121,23 +125,32 @@ a {
 	border-radius: 2em;
 }
 
-a:focus{
-	background-color: var(--focus-color);
+select {
+	font-weight: 800;
+	font-size: 1em;
+	background-color: rgba(255, 255, 255);
+	color: var(--style-color-one);
+	border-radius: 3em;
 }
 
-
 button,
-a {
+a,
+select {
 	border: 0;
 }
 
-button:focus {
+/* in een andere browser werkt tab focus beter dan in firefox, maar focus kleur zie je niet meer op de knoppen en ik weet echt niet waarom, wel bij input */
+a:focus,
+button:focus,
+select:focus {
 	background-color: var(--focus-color);
 }
 
-/* tab .index */
 
-.oranje_knop {
+/* tab .index */
+main section:first-of-type a,
+main section:nth-of-type(3) a,
+main section:last-of-type a {
 	background-color: var(--main-button-color);
 	height: 3em;
 	padding: 1.7em 7em;
@@ -150,7 +163,7 @@ button:focus {
 
 /* --cube styling dat over meer sections gaat */
 main section:nth-of-type(2),
-main section:nth-child(5),
+main section:last-of-type,
 .order article {
 	display: flex;
 	flex-direction: column;
@@ -162,16 +175,16 @@ main section:nth-child(5),
 /* hielp om de 2e article weer goed te krijgen, behalve de width */
 main section:nth-of-type(2) article,
 main section:nth-of-type(2) article:nth-of-type(2) section,
-main section:nth-child(5) article img:first-of-type,
+main section:last-of-type article img:first-of-type,
 .order article section {
 	border-radius: var(--border-radius-cubes);
 }
 
 
 /* --svg icon styling dat over meer sections gaat */
-footer img,
+footer>img,
 main section:nth-of-type(3) img,
-main section:nth-child(5) img:last-of-type {
+main section:last-of-type img:last-of-type {
 	background-color: var(--style-color-one);
 	width: 3.5em;
 	border-radius: 3em;
@@ -194,17 +207,36 @@ oudere site en de padding van de ul, maar na een feedback moment heb ik het vera
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout
  Lukkt eerst niet, daarna hulp van docent. De grid zelf werkte ook niet wegens verkeerd de html opgeroepen*/
-header ul{
+
+
+header {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	border-bottom: solid .03em rgb(191, 191, 191);
+}
+
+
+
+/* om de blokjes goed te zetten heb ik centreren geprobeerd maar omdat het rechte blokjes kleiner is lijkt het net uit balans 
+Ik had eerst de grid van maxcontenten auto content naar 1fr gedaan, maar stond de dichtbij. toen 33 33 maar ook te dichtbij, daarna 25 50 25 en dat werkt heb beste */
+header ul {
 	display: grid;
-	grid-template-columns: max-content auto max-content;
+	grid-template-columns: 25% 50% 25%;
 	grid-template-rows: 1fr;
 	display: grid;
 	align-items: center;
 }
 
 
+header ul:first-of-type li {
+	display: flex;
+	justify-content: center;
+}
 
-header ul li:first-of-type{
+header ul li:first-of-type {
 	grid-column-start: 2;
 	grid-row-start: 1;
 	display: flex;
@@ -222,20 +254,21 @@ header ul li button:first-of-type {
 	border-radius: 1em;
 }
 
-header ul:first-of-type li:last-of-type{
-	display:none;
-}
-
-header ul:first-of-type li:nth-of-type(2) button,
-header ul:first-of-type li:last-of-type button {
+header ul:first-of-type li:nth-of-type(2) {
 	grid-column-start: 1;
 	grid-row-start: 1;
+
+}
+
+
+header ul:first-of-type li:nth-of-type(2) button {
 	width: 4.3em;
 	height: 2.7em;
 	border-radius: 1.5em;
+
 }
 
-header ul li:nth-of-type(3) button {
+header ul li:last-of-type button {
 	grid-column-start: 3;
 	grid-row-start: 1;
 	width: 3em;
@@ -247,6 +280,14 @@ header ul:first-of-type li:last-of-type img {
 	width: 45%;
 }
 
+/* .menuOPen studente assisetne en docent hebben geholpen hiermee. Had eerst css in js gedaan. ik dacht dat alles goed ging maar andere button ging ook mee nadat ik mijn html heb aangepast*/
+header.menuOpen ul li:nth-of-type(2) button img {
+	content: url(/images/close.svg);
+	width: 45%;
+}
+
+
+
 /* https://stackoverflow.com/questions/47865412/how-to-change-the-size-of-the-image-on-the-button-in-html-css
 Eerst was de img veel te groot, waardoor de container ook groot was */
 header button img {
@@ -257,27 +298,90 @@ header button img {
 
 
 /* --nav */
+/* https://www.sololearn.com/Discuss/3177679/how-to-sequence-multiple-text-animations-one-after-one  */
+@keyframes fadeintext {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
 
 header nav {
-	display: none;
+	/* display: none; */
 	width: 100%;
 	position: fixed;
 	height: 100vh;
 	background: rgb(255, 255, 255);
-	margin: auto -1.5em auto -1.5em;
-	z-index: 10;
+	margin: 0;
+	opacity: 0;
+	pointer-events: none;
 }
 
+header.menuOpen nav {
+	opacity: 1;
+	pointer-events: all;
+}
+
+/* deed eerst grid maar werkte neit met aanpasiing code dus flex  */
 header nav ul {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: repeat(5, 1fr);
-	grid-row-gap: 26px;
-	display: grid;
+	row-gap: 1.5em;
+	display: flex;
+	flex-flow: column;
 	justify-items: center;
 	font-size: 2.4em;
-	color: rgba(81, 45, 0, 255);
+	color: rgba(81, 45, 0);
+	transition: 0.5s;
+	opacity: 0;
 }
+
+header.menuOpen nav ul {
+	opacity: 1;
+}
+
+header.menuOpen nav ul li a {
+	color: rgba(81, 45, 0);
+}
+
+
+/* fill mode make it go one by one  */
+header.menuOpen nav ul li {
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+header.menuOpen nav ul li:first-of-type {
+	animation-name: fadeintext;
+	animation-delay: 0s;
+}
+
+
+header.menuOpen nav ul li:nth-of-type(2) {
+	animation-name: fadeintext;
+	animation-delay: 0.25s;
+}
+
+
+header.menuOpen nav ul li:nth-of-type(3) {
+	animation-name: fadeintext;
+	animation-delay: 0.5s;
+}
+
+
+header.menuOpen nav ul li:nth-of-type(4) {
+	animation-name: fadeintext;
+	animation-delay: 0.75s;
+}
+
+
+header.menuOpen nav ul li:last-of-type {
+	animation-name: fadeintext;
+	animation-delay: 1s;
+}
+
+
 
 
 /****************/
@@ -286,7 +390,8 @@ header nav ul {
 /* idk how to fix the problem of them margin without doing - */
 footer {
 	background-color: rgb(255, 110, 12);
-	margin: auto -1.5em 10em -1.5em;
+	margin: auto -1.5em auto -1.5em;
+	padding-bottom: 6em;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -295,14 +400,14 @@ footer {
 }
 
 /* sstrugglin with gap, was workin on the wrong parent. if i wanted to use gap ,had to put the lists in grid */
-footer ul:first-of-type {
+footer ul {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(4, 1fr);
 	grid-row-gap: .5em;
 }
 
-footer ul:first-of-type a {
+footer ul a {
 	background-color: rgba(238, 77, 37, 255);
 	padding: 1.7em 7em;
 	color: var(--background-font-color);
@@ -312,7 +417,7 @@ footer ul:first-of-type a {
 
 }
 
-footer img {
+footer>img {
 	background-color: rgba(245, 245, 245, 255);
 	width: 10em;
 	border-radius: 7em;
@@ -321,6 +426,8 @@ footer img {
 	transform: rotate(-20deg);
 	box-shadow: .3em .3em .5em rgb(25, 25, 25, .5);
 }
+
+
 
 
 /****************/
@@ -364,19 +471,7 @@ flex en fixed. Dit heb ik opgelost door beide de a en de containter een flex en 
 /* als ik responsive maak dan grid in de media wuery */
 
 
-/* Ik had eerst voor de 1rste article de box goed gezet, maar het is handiger om het op de section en articles te roepen dan per elke individuele */
-/* main section:nth-of-type(2) {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1.2em;
-} */
 
-/* 
-main section:nth-of-type(2) article {
-	border-radius: var(--border-radius-cubes);
-} */
 
 
 
@@ -388,9 +483,9 @@ main section:nth-of-type(2) article {
 Ik moest de background goed positioneren  */
 .index section:nth-of-type(2) article:first-of-type,
 .index section:nth-of-type(2) article:last-of-type {
-	background-color: rgba(221, 189, 142, 255);
+	background-color: rgb(179, 142, 86);
 	background-image: url("/images/coffee_bgeffect.svg");
-	background-size: contain;
+	background-size: 100%;
 	background-repeat: no-repeat;
 	height: 23em;
 	overflow-y: hidden;
@@ -423,6 +518,18 @@ Ik moest de background goed positioneren  */
 	grid-template-rows: repeat(3, 33%);
 }
 
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3),
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type,
+.order article section:nth-of-type(2),
+.order article section:nth-of-type(3),
+.order article section:last-of-type {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(3, 1fr);
+	gap: 0;
+	display: none;
+}
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type h4,
 .order article section:first-of-type h4 {
@@ -431,11 +538,49 @@ Ik moest de background goed positioneren  */
 	grid-row-start: 1;
 }
 
+
+
 .index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
-.order article section:nth-of-type(2) h4 {
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type h4,
+.order article section:nth-of-type(2) h4,
+.order article section:nth-of-type(3) h4,
+.order article section:last-of-type h4 {
+	font-size: 1.5em;
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type h4,
+.order article section:nth-of-type(2) h4,
+.order article section:nth-of-type(3) h4,
+.order article section:last-of-type h4 {
 	grid-column-start: 1;
 	grid-column-end: -1;
 	grid-row-start: 2;
+}
+
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) h4,
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type h4,
+.order article section:nth-of-type(2) h4,
+.order article section:first-of-type h4,
+.order article section:nth-of-type(2) h4,
+.order article section:nth-of-type(3) h4,
+.order article section:last-of-type h4 {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 0;
+	color: var(--background-font-color);
+}
+
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) h4,
+.order article section:nth-of-type(3) h4 {
+	margin-bottom: 1em;
 }
 
 
@@ -449,7 +594,9 @@ Ik moest de background goed positioneren  */
 
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button:first-of-type,
-.order article section:first-of-type button:first-of-type {
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) button:first-of-type,
+.order article section:first-of-type button:first-of-type,
+.order article section:nth-of-type(3) button:first-of-type {
 	grid-column-start: 1;
 	grid-row-start: 3;
 	background-color: rgba(255, 255, 255);
@@ -457,29 +604,15 @@ Ik moest de background goed positioneren  */
 }
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button:nth-of-type(2),
-.order article section:first-of-type button:nth-of-type(2) {
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) button:nth-of-type(2),
+.order article section:first-of-type button:nth-of-type(2),
+.order article section:nth-of-type(3) button:nth-of-type(2) {
 	grid-column-start: 2;
 	grid-row-start: 3;
 	background-color: rgba(255, 255, 255, 0.3);
 }
 
 
-.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
-.order article section:nth-of-type(2),
-.order article section:nth-of-type(3),
-.order article section:last-of-type {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: repeat(3, 1fr);
-	gap: 0;
-	display: none;
-}
-
-
-.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
-.order article section:nth-of-type(2) h4 {
-	font-size: 1.5em;
-}
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) input,
 .order article section:nth-of-type(2) input {
@@ -498,6 +631,13 @@ Ik moest de background goed positioneren  */
 	background-color: var(--focus-color);
 }
 
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type select,
+.order article section:last-of-type select {
+	grid-column-start: 1;
+	grid-column-end: -1;
+	grid-row-start: 3;
+}
+
 .index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) button:first-of-type,
 .order article section:nth-of-type(2) button:first-of-type {
 	grid-column-start: 2;
@@ -508,7 +648,11 @@ Ik moest de background goed positioneren  */
 }
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) button:nth-of-type(2),
-.order article section:nth-of-type(2) button:nth-of-type(2) {
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) button:last-of-type,
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type button,
+.order article section:nth-of-type(2) button:nth-of-type(2),
+.order article section:nth-of-type(3) button:last-of-type,
+.order article section:last-of-type button {
 	grid-column-start: 1;
 	grid-row-start: 1;
 	background-color: unset;
@@ -518,6 +662,8 @@ Ik moest de background goed positioneren  */
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type,
 .index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3),
+.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type,
 .order article section:first-of-type,
 .order article section:nth-of-type(2),
 .order article section:nth-of-type(3),
@@ -526,30 +672,20 @@ Ik moest de background goed positioneren  */
 	border: 0.5em solid var(--style-color-one);
 	height: 12em;
 	width: 87vw;
-	/* width: 20.4em; */
 	color: var(--background-font-color);
 }
 
-.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type h4,
-.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) h4,
-.order article section:first-of-type h4,
-.order article section:nth-of-type(2) h4,
-.order article section:nth-of-type(3) h4,
-.order article section:last-of-type h4 {
-	display: grid;
-	align-items: center;
-	justify-content: center;
-	margin: 0;
-	color: var(--background-font-color);
-}
 
 .index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button,
 .index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) button:first-of-type,
+.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) button,
 .order article section:first-of-type button,
-.order article section:nth-of-type(2) button:first-of-type {
+.order article section:nth-of-type(2) button:first-of-type,
+.order article section:nth-of-type(3) button {
 	height: 3em;
-	width: 9em;
+	width: 90%;
 	justify-self: center;
+	align-self: center;
 }
 
 
@@ -558,7 +694,7 @@ Ik moest de background goed positioneren  */
 /* --article 3 */
 
 .index section:nth-of-type(2) article:last-of-type {
-	background-color: rgba(153, 215, 233, 255);
+	background-color: rgb(60, 157, 184);
 	background-image: none;
 	width: 100%;
 	overflow-x: hidden;
@@ -569,21 +705,20 @@ Ik moest de background goed positioneren  */
 .index section:nth-of-type(2) article:last-of-type img {
 	width: 25em;
 	margin-left: -1.8em;
-	display: flex;
 }
 
 
 
 /* SECTION 3: bestel stappenplan */
 
-.index section:nth-of-type(3) ol {
+.index section:nth-of-type(3) article ol {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: repeat(3, 1fr);
-	grid-row-gap: 1em;
+	row-gap: 1em;
 }
 
-.index section:nth-of-type(3) ol li {
+.index section:nth-of-type(3) article ol li {
 	background-color: white;
 	display: grid;
 	grid-template-columns: 30% 66%;
@@ -592,27 +727,22 @@ Ik moest de background goed positioneren  */
 }
 
 
-.index section:nth-of-type(3) h3 {
+.index section:nth-of-type(3) article h3 {
 	font-size: 4em;
 	margin-bottom: .6em;
 }
 
-.index section:nth-of-type(3) h3 span {
+.index section:nth-of-type(3) article h3 span {
 	color: var(--style-color-two);
 }
 
-.index section:nth-of-type(3) h4 {
+.index section:nth-of-type(3) article h4 {
 	grid-column-start: 2;
 	grid-row-start: 1;
 	font-size: 1.5em;
-	/* margin: 1em 0 .2em 0 ; */
-	/* display: grid;
-	justify-content: flex-end; */
-	/* background-color: aqua; */
-
 }
 
-.index section:nth-of-type(3) p {
+.index section:nth-of-type(3) article p {
 	grid-column-start: 2;
 	grid-row-start: 2;
 	font-size: .85em;
@@ -621,77 +751,76 @@ Ik moest de background goed positioneren  */
 	line-height: 1.2em;
 }
 
-.index section:nth-of-type(3) li:last-of-type h4 {
+.index section:nth-of-type(3) article li:last-of-type h4 {
 	grid-column-start: 2;
 	grid-row: 1/3;
 	display: flex;
 	align-self: center;
 }
 
-.index section:nth-of-type(3) img {
+.index section:nth-of-type(3) article img {
 	grid-column-start: 1;
 	grid-row: 1 / 3;
 	width: 3.5em;
 	padding: .7em;
 }
 
-.index section:nth-of-type(3) li:nth-of-type(2) img {
+.index section:nth-of-type(3) article li:nth-of-type(2) img {
 	background-color: var(--style-color-two);
 }
 
 
 
-/* SECTION 5: BLOG POSTS */
+/* SECTION 4: BLOG POSTS */
 
 
-.index section:nth-child(5) article {
+.index section:last-of-type article {
 	display: flex;
 	flex-direction: column;
 	padding-top: 4em;
 }
 
 
-.index section:nth-child(5) h3 {
+.index section:last-of-type h3 {
 	font-size: 2.35em;
 	text-transform: unset;
 	margin: auto;
 }
 
-.index section:nth-child(5) article:last-of-type h3 {
+.index section:last-of-type article:last-of-type h3 {
 	color: var(--style-color-two);
 }
 
-.index section:nth-child(5) p {
+.index section:last-of-type p {
 	font-size: 1.2em;
 }
 
 
-.index section:nth-child(5) img {
+.index section:last-of-type img {
 	order: -1;
 }
 
-.index section:nth-child(5) img:first-of-type {
+.index section:last-of-type img:first-of-type {
 	width: 95%;
 	margin: auto;
 	display: flex;
 	justify-content: center;
 }
 
-.index section:nth-child(5) img:last-of-type {
+.index section:last-of-type img:last-of-type {
 	background-color: var(--style-color-two);
 	width: 6em;
-	/* border-radius: 3em;
-	display: flex;
-	align-self: flex-end;
-	justify-self: center; */
 	padding: 1.2em;
 	margin: -3em 2em 1em auto;
 }
 
-.index section:nth-child(5) img:last-of-type {
+.index section:last-of-type img:last-of-type {
 	background-color: var(--style-color-one);
 }
 
+.index section:last-of-type article:first-of-type img {
+	background-color: var(--style-color-two);
+}
 
 /****************/
 /* MAIN ORDER*/
@@ -712,4 +841,517 @@ Ik moest de background goed positioneren  */
 
 .order article section p {
 	color: var(--background-font-color);
+}
+
+
+
+
+@media screen and (min-width: 50em) {
+
+
+	/*********************/
+	/* GENERAL STYLING */
+	/*********************/
+
+	main {
+		margin: auto 5em;
+	}
+
+
+	/*********************/
+	/* FOOTER */
+	/*********************/
+
+	footer {
+		display: grid;
+		grid-template-columns: 25% 50% 25%;
+		grid-template-rows: 6em;
+		justify-content: center;
+		align-items: center;
+		height: 2em;
+		margin-bottom: 2em;
+	}
+
+	footer ul {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		width: 100%;
+	}
+
+	footer ul a {
+		background-color: unset;
+		color: var(--background-font-color);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: unset;
+		font-size: 1.3em;
+
+	}
+
+
+	/*********************/
+	/* MAIN*/
+	/*********************/
+
+	/* SECTION 1: STICKY BUUTON*/
+
+	.index section:first-of-type {
+		display: none;
+	}
+
+	/* SECTION 2: MEDIA INTRO */
+	.index section:nth-of-type(2) {
+		display: grid;
+		grid-template-columns: 60% 40%;
+		grid-template-rows: 50% 50%;
+		grid-row-gap: 1.5em;
+	}
+
+	.index section:nth-of-type(2) article:first-of-type {
+		grid-column-start: 1;
+		grid-row-start: 1;
+		grid-row-end: 4;
+		display: grid;
+		align-self: flex-start;
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) {
+		grid-column-start: 2;
+		grid-row-start: 1;
+	}
+
+	.index section:nth-of-type(2) article:last-of-type {
+		grid-column-start: 2;
+		grid-row-start: 2;
+	}
+
+
+	/* --article 1 */
+	.index section:nth-of-type(2) article:first-of-type {
+		height: 30em;
+	}
+
+
+
+	/* --article 2 */
+	.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type {
+		width: 100%;
+
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		justify-content: center;
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) input {
+		width: 20em;
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type button {
+		width: 90%;
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3) {
+		margin: auto;
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type,
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3),
+	.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type {
+		column-gap: .5em;
+		width: 100%;
+	}
+
+
+
+
+	/* --article 3 */
+
+	.index section:nth-of-type(2) article:last-of-type {
+		height: 16.7em;
+	}
+
+
+	/* SECTION 3: BESTELPLAN */
+
+
+	.index section:nth-of-type(3) {
+		margin-top: 3em;
+	}
+
+	.index section:nth-of-type(3) article {
+		display: grid;
+		grid-template-columns: 40% 60%;
+		grid-template-rows: 1fr;
+		grid-gap: 2em;
+		justify-content: center;
+	}
+
+	.index section:nth-of-type(3) article h3 {
+		grid-column-start: 1;
+		grid-row-start: 1;
+		display: grid;
+		justify-self: center;
+		margin: auto;
+		font-size: 3.5em;
+	}
+
+	.index section:nth-of-type(3) article a {
+		justify-self: center;
+	}
+
+	.index section:nth-of-type(3) article ol {
+		display: grid;
+		justify-self: center;
+	}
+
+	.index section:nth-of-type(3) article ol li:first-of-type {
+		grid-column-start: 2;
+		grid-row-start: 1;
+
+	}
+
+	.index section:nth-of-type(3) article ol li:nth-of-type(2) {
+		grid-column-start: 2;
+		grid-row-start: 2;
+
+	}
+
+	.index section:nth-of-type(3) article ol li:last-of-type {
+		grid-column-start: 2;
+		grid-row-start: 3;
+
+	}
+
+	.index section:nth-of-type(3) article a {
+		grid-column-start: 1;
+		grid-row-start: 1;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 23em;
+
+	}
+
+
+	/* SECTION 4: BLOG POSTS */
+	.index section:last-of-type {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 50% 50%;
+		row-gap: 4em;
+
+	}
+
+
+	.index section:last-of-type article {
+		display: grid;
+		grid-template-columns: 40% 60%;
+		grid-template-rows: repeat(3, 33%);
+		row-gap: 1em;
+		column-gap: 3em;
+		justify-content: center;
+	}
+
+	.index section:last-of-type article:last-of-type {
+		display: grid;
+		grid-template-columns: 60% 40%;
+	}
+
+
+	.index section:last-of-type article img:last-of-type {
+		margin-top: 15em;
+	}
+
+	.index section:last-of-type article:first-of-type img {
+		grid-column-start: 1;
+		grid-row: 1/4;
+	}
+
+	.index section:last-of-type article:first-of-type h3 {
+		grid-column-start: 2;
+		grid-row-start: 1;
+	}
+
+
+	.index section:last-of-type article:first-of-type p {
+		grid-column-start: 2;
+		grid-row-start: 2;
+	}
+
+	.index section:last-of-type article:first-of-type a {
+		grid-column-start: 2;
+		grid-row-start: 3;
+		justify-self: center;
+	}
+
+	.index section:last-of-type article:last-of-type img {
+		grid-column-start: 2;
+		grid-row: 1/4;
+	}
+
+
+	.index section:last-of-type article:last-of-type h3 {
+		grid-column-start: 1;
+		grid-row-start: 1;
+	}
+
+
+	.index section:last-of-type article:last-of-type p {
+		grid-column-start: 1;
+		grid-row-start: 2;
+	}
+
+	.index section:last-of-type article:last-of-type a {
+		grid-column-start: 1;
+		grid-row-start: 3;
+		justify-self: center;
+	}
+
+
+	/****************/
+	/* MAIN ORDER*/
+	/****************/
+
+
+
+	.order article section:first-of-type,
+	.order article section:nth-of-type(2),
+	.order article section:nth-of-type(3),
+	.order article section:last-of-type {
+		width: 30em;
+		height: 15em;
+	}
+
+
+	.order article section:nth-of-type(2) input {
+		width: 20em;
+	}
+
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 80em) {
+
+
+	/*********************/
+	/* GENERAL STYLING */
+	/*********************/
+
+
+	body {
+		padding: 0 3em;
+		background: linear-gradient(rgb(255, 255, 255) 0% 30%, rgba(245, 245, 245, 255) 30% 58%, rgb(255, 255, 255) 58% 100%);
+	}
+
+	/* --texts and buttons */
+
+
+	h3,
+	h4 {
+		font-size: 5em;
+	}
+
+
+
+	/*********************/
+	/* HEADER */
+	/*********************/
+
+
+	header {
+		position: unset;
+		width: 100%;
+		z-index: 2;
+		display: grid;
+		grid-template-columns: 25% 50% 25%;
+		grid-template-rows: 1fr;
+		display: grid;
+		align-items: center;
+	}
+
+
+	header {
+		display: grid;
+		grid-template-columns: 25% 50% 25%;
+		grid-template-rows: 1fr;
+		display: grid;
+		align-items: center;
+	}
+
+	header ul {
+		grid-column-start: 1;
+	}
+
+	header nav {
+		display: grid;
+		justify-content: center;
+		background-color: unset;
+		grid-column-start: 2;
+		position: unset;
+		height: 3.5em;
+		opacity: 1;
+	}
+
+	header nav ul {
+		flex-direction: row;
+		font-size: 1.2em;
+		opacity: 1;
+
+	}
+
+
+	/* met margin wat flex en grid werkt niet  */
+	header nav ul li {
+		margin: 0 1em;
+	}
+
+	header nav ul a {
+		color: rgba(81, 45, 0);
+	}
+
+	header ul li a img {
+		max-width: 10em;
+	}
+
+	header ul:first-of-type li:nth-of-type(2) button,
+	header ul li:last-of-type button,
+	header ul li:nth-of-type(2) button img,
+	header ul:first-of-type li:last-of-type img,
+	header.menuOpen ul li:nth-of-type(2) button img {
+		display: none;
+
+	}
+
+
+	/*********************/
+	/* FOOTER */
+	/*********************/
+
+	footer {
+		margin: auto -3.5em;
+	}
+
+	/*********************/
+	/* MAIN*/
+	/*********************/
+
+
+	/* SECTION 1: MEDIA INTRO  */
+	.index section:nth-of-type(2) {
+		display: grid;
+		grid-template-columns: 60% 40%;
+		grid-template-rows: 15em 24em;
+		grid-row-gap: 1.5em;
+	}
+
+
+	/* --article 1 */
+	.index section:nth-of-type(2) article:first-of-type {
+		height: 40em;
+	}
+
+	.index section:nth-of-type(2) article:first-of-type img {
+		margin-top: 10em;
+	}
+
+	/* --article 2, 3 */
+
+	.index section:nth-of-type(2) article:nth-of-type(2),
+	.index section:nth-of-type(2) article:last-of-type {
+		align-self: flex-start;
+	}
+
+	.index section:nth-of-type(2) article:last-of-type {
+		height: 24em;
+	}
+
+	.index section:nth-of-type(2) article:last-of-type img {
+		width: 100%;
+		margin-left: 1em;
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:first-of-type,
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2),
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(3),
+	.index section:nth-of-type(2) article:nth-of-type(2) section:last-of-type {
+		width: 100%;
+		height: 15em;
+
+	}
+
+	.index section:nth-of-type(2) article:nth-of-type(2) section:nth-of-type(2) input {
+		width: 25em;
+	}
+
+
+	/* SECTION 3: BESTELPLAN  */
+
+
+
+
+	/* SECTION 3: bestel stappenplan */
+
+	.index section:nth-of-type(3) article ol {
+		row-gap: 2em;
+	}
+
+	.index section:nth-of-type(3) article ol li {
+		height: 12em;
+		row-gap: 2em;
+	}
+
+	.index section:nth-of-type(3) article h3 {
+		font-size: 5em;
+
+	}
+
+	.index section:nth-of-type(3) article h4 {
+		font-size: 2em;
+	}
+
+	.index section:nth-of-type(3) article p {
+		font-size: 1em;
+	}
+
+	.index section:nth-of-type(3) article a {
+		margin-top: 30em;
+	}
+
+	/* SECTION:BLOG POSTS  */
+	.index section:last-of-type article {
+		width: 60em;
+		justify-self: center;
+	}
+
+	.index section:last-of-type article p {
+		font-size: 1.5em;
+	}
+
+	/****************/
+	/* MAIN ORDER*/
+	/****************/
+
+
+	.order {
+		margin: auto -3.5em auto -3.5em;
+	}
+
+	.order article section {
+		justify-content: center;
+	}
+
+
 }
