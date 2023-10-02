@@ -67,6 +67,7 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   7. De contrast is te laag bij hun 'p's. Het is lichtgrijs op een witte achtergrond. het had een score van onder de 2.
   
 
+<a href="FED 23-24 - Blok 1 - WCAG checklist.pdf">Link naar het testverslag</a>
 </details>
 
 
@@ -79,11 +80,11 @@ Nb. Door *open* toe te voegen aan een *details* element kun je deze standaard op
   ### de hele pagina: 
   <img src="readme-images/breakdown_1.jpeg" width="375px" alt="breakdown van de hele pagina">
 
-  <img src="readme-images/breakdown_2.jpeg"" width="375px" alt="breakdown van de hele pagina">
+  <img src="readme-images/breakdown_2.jpeg" width="375px" alt="breakdown van de hele pagina">
 
-  <img src="readme-images/breakdown_3.jpeg"" width="375px" alt="breakdown van de hele pagina">
+  <img src="readme-images/breakdown_3.jpeg" width="375px" alt="breakdown van de hele pagina">
 
-  <img src="readme-images/breakdown_4.jpeg"" width="375px" alt="breakdown van de hele pagina">
+  <img src="readme-images/breakdown_4.jpeg" width="375px" alt="breakdown van de hele pagina">
 
 
   ### desktop: 
@@ -252,6 +253,10 @@ Ik heb alles dat nog geen label had een label en alt gegeven. Verder heb ik ook 
   - als ik tab doe voor focus, gaat hij van de pagina af en hij pakt niet alle buttons
   - tabindex doet het niet
   - voeg skip link toe
+
+
+
+<a href="FED 23-24 - Blok 1 - WCAG checklist.pdf">Link naar het testverslag</a>
 
 </details>
 
